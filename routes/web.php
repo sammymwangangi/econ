@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,10 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resources([
+    'wiki' => PostController::class,
+    'categories' => CategoryController::class,
+    'settings' => GeneralController::class,
+    'comments' => CommentsController::class,
+]);
