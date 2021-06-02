@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
+// use App\Http\Livewire\Projects;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,5 @@ Route::resources([
 ]);
 
 Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index');
+
+// Route::get('taskmanager/projects1', Projects::class);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Team;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,8 +19,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        // $teams = Team::all();
+        $teams = Team::with('projects')->get();
+        // $projects = Team::find(1)->projects;
+        // $projects = Project::all();
+        return view('projects.index', compact('teams'));
     }
 
     /**
@@ -29,7 +33,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+        return view('projects.create', compact('teams'));
     }
 
     /**
@@ -41,7 +46,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:posts|max:255',
+            'name' => 'required|unique:projects|max:255',
             'description' => 'required',
         ]);
 
@@ -51,7 +56,12 @@ class ProjectController extends Controller
                         ->withInput();
         }
 
-        Project::create($request->all());
+        $project = new Project();
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->team_id = $request->team_id;
+        $project->user_id = Auth::id();
+        $project->save();
 
         return redirect()->route('projects.index')
             ->with('success', 'Project created successfully.');

@@ -7,7 +7,7 @@ use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
 use Auth;
-
+use Illuminate\Support\Facades\Validator;
 
 class TasksController extends Controller
 {
@@ -18,8 +18,9 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        return view('tasks.index', compact('tasks'));
+        // $tasks = Task::all();
+        $projects = Project::with('tasks')->get();
+        return view('tasks.index', compact('projects'));
     }
 
     /**
@@ -29,7 +30,9 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::all();
+        $users = User::all()->except([1]);
+        return view('tasks.create', compact('projects','users'));
     }
 
     /**
@@ -41,7 +44,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:posts|max:255',
+            'name' => 'required|unique:tasks|max:255',
             'description' => 'required',
             'status' => 'required',
             'priority' => 'required',
@@ -56,7 +59,17 @@ class TasksController extends Controller
                         ->withInput();
         }
 
-        Task::create($request->all());
+        $task = new task();
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->status = $request->status;
+        $task->priority = $request->priority;
+        $task->start_at = $request->start_at;
+        $task->end_at = $request->end_at;
+        $task->assigned_to = $request->assigned_to;
+        $task->project_id = $request->project_id;
+        $task->user_id = Auth::id();
+        $task->save();
 
         return redirect()->route('tasks.index')
             ->with('success', 'Task created successfully.');
