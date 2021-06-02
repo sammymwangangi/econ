@@ -1,6 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TasksController;
+// use App\Http\Livewire\Projects;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +28,16 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resources([
+    'wiki' => PostController::class,
+    'categories' => CategoryController::class,
+    'settings' => GeneralController::class,
+    'comments' => CommentsController::class,
+    'taskmanager/projects' => ProjectController::class,
+    'taskmanager/tasks' => TasksController::class,
+]);
+
+Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index');
+
+// Route::get('taskmanager/projects1', Projects::class);
