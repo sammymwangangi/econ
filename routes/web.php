@@ -5,6 +5,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +33,8 @@ Route::resources([
     'categories' => CategoryController::class,
     'settings' => GeneralController::class,
     'comments' => CommentsController::class,
+    'taskmanager/projects' => ProjectController::class,
+    'taskmanager/tasks' => TasksController::class,
 ]);
+
+Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index');
