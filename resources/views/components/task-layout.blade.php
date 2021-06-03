@@ -19,6 +19,8 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -44,5 +46,16 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script>
+            tippy('a', {
+                content:(reference)=>reference.getAttribute('data-title'),
+                onMount(instance) {
+                    instance.popperInstance.setOptions({
+                    placement :instance.reference.getAttribute('data-placement')
+                    });
+                }
+            });
+        </script>
     </body>
 </html>

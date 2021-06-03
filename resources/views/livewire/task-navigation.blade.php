@@ -17,22 +17,22 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('manager.index') }}" :active="request()->routeIs('manager.index')" target="_blank">
+                    <x-jet-nav-link href="{{ route('manager.index') }}" :active="request()->routeIs('manager.index')">
                         {{ __('Home') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.index')" target="_blank">
+                    <x-jet-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.index')">
                         {{ __('Projects') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks.index')" target="_blank">
+                    <x-jet-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks.index')">
                         {{ __('Tasks') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ url('#') }}" :active="request()->routeIs('wiki.index')" target="_blank">
+                    <x-jet-nav-link href="{{ url('#') }}" :active="request()->routeIs('wiki.index')">
                         {{ __('Reports') }}
                     </x-jet-nav-link>
                 </div>
