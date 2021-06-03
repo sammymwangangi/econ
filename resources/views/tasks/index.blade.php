@@ -26,7 +26,7 @@
                     <div class="flex flex-wrap items-center gap-2">
                     	<div class="flex flex-wrap items-center gap-2">
                     		@include('layouts.status')
-                        	<h1 class="font-semibold">{{$task->name}}</h1>
+                        	<a href="{{route('tasks.show', $task->id)}}" class="font-semibold">{{$task->name}}</a>
                     	</div>
                         <div class="flex flex-wrap items-center gap-2" contenteditable="none">
                             @if($task->status === 'Completed')
@@ -34,9 +34,7 @@
             	                   {{$task->status}}
             	                </button>
                             @endif
-        	                <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-        	                    {{$task->priority}}
-        	                </button>
+        	                @include('layouts.priority')
                             @if($task->assigned_to === null)
         	                   <button class="hidden flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
                                     {{$task->assigned_to}}
