@@ -41,7 +41,7 @@
                     <div class="flex-col hover:bg-red-50">
                         <div class="flex flex-wrap items-center gap-2 px-4 py-2">
                             @include('layouts.status')
-                            {{$task->name}}
+                            <a href="{{route('tasks.show', $task->id)}}">{{$task->name}}</a>
                         </div>
                         <div class="flex flex-wrap items-center gap-2 px-4 py-2">
                             @include('layouts.priority')

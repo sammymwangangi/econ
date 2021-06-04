@@ -29,6 +29,11 @@ class CreateTasksTable extends Migration
             $table->foreign('project_id')->references('id')->on('projects');
             $table->timestamps();
         });
+
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->softDeletes();
+        });
+
     }
 
     /**
@@ -39,5 +44,11 @@ class CreateTasksTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tasks');
+
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
+
+
 }

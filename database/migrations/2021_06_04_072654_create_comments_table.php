@@ -15,10 +15,18 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->text('body');
 
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('task_id')->references('id')->on('tasks');
             $table->timestamps();
+        });
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -30,5 +38,11 @@ class CreateCommentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('comments');
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
+
+
 }

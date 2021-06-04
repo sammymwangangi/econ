@@ -61,7 +61,26 @@
         </div>
         <div class="bg-white shadow-lg rounded px-8 py-4 my-4 text-gray-600">{{$task->description}}</div>
 
-        <div class="text-gray-500 font-bold">Comments</div>
+        <div class="text-gray-500 font-bold">
+            <h1 class="py-4 text-xl">Comments</h1>
+            <hr>
+  
+            @include('layouts.commentsDisplay', ['comments' => $task->comments, 'task_id' => $task->id])
+
+            <hr />
+            <h4 class="py-4 font-semibold">Add comment</h4>
+            <form method="post" action="{{ route('comments.store'   ) }}">
+                @csrf
+                <div class="form-group">
+                    {{-- <textarea class="form-control" name="body"></textarea> --}}
+                     <textarea id="body" rows="3" class="w-full rounded border-gray-200 @error('body') border-red-500 @enderror" name="body" value="{{ old('body') }}" required></textarea>
+                    <input type="hidden" name="task_id" value="{{ $task->id }}" />
+                </div>
+                <div class="">
+                    <input type="submit" class="flex items-center px-4 py-1 text-sm text-red-600 font-semibold rounded-full bg-white border border-red-200 hover:text-white hover:bg-red-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 cursor-pointer" value="Comment" />
+                </div>
+            </form>
+        </div>
     </div>
 
 </x-task-layout>
