@@ -4,7 +4,7 @@
             <div class="flex items-center">
                 <div>
                     <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                        <img class="h-6 w-6 rounded-full object-cover" src="{{ $task->user->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        <img class="h-6 w-6 rounded-full object-cover" src="{{ $comment->user->profile_photo_url }}" alt="image" />
                     </button>
                 </div>
                 <div class="font-bold pr-2">{{ $comment->user->name }}</div>
