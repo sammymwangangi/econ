@@ -21,6 +21,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -46,6 +47,28 @@
         @stack('modals')
 
         @livewireScripts
+        {{-- <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script> --}}
+        <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.ckeditor').ckeditor();
+            });
+        </script>
+
+        <script type="text/javascript">
+            CKEDITOR.replace('body', {
+                filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form',
+                config.toolbarCanCollapse = true;
+            });
+        </script>
+
+        <script type="text/javascript">
+            CKEDITOR.replace('description', {
+                filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
 
         <script>
             tippy('a', {

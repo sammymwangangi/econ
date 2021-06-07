@@ -56,15 +56,18 @@
                             @enderror
                         </div>
 
-                        <div class="flex flex-wrap mb-6">
-                            <label for="description" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
-                                {{ __('Description') }}:
-                            </label>
-
-                            <textarea id="description" rows="3" class="w-full rounded @error('description') border-red-500 @enderror" name="description" value="{{ old('description') }}" required></textarea>
-                            <p class="mt-2 text-sm text-gray-500">
-				                Brief description about the task.
-				            </p>
+                        <div class="flex flex-col flex-wrap mb-6">
+                            <div>
+                                <label for="description" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+                                    {{ __('Description') }}:
+                                </label>
+                            </div>
+                            <div>
+                                <textarea id="description" rows="2" class="ckeditor w-full rounded @error('description') border-red-500 @enderror" name="description" value="{{ old('description') }}" required></textarea>
+                                <p class="mt-2 text-sm text-gray-500">
+    				                Brief description about the task.
+    				            </p>
+                            </div>
 
                             @error('description')
                                 <p class="text-red-500 text-xs italic mt-4">

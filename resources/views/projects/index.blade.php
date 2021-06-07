@@ -30,7 +30,7 @@
                             <div class="flex items-center">
                                 <h1 class="font-bold">{{$project->name}}</h1>
                             </div>
-                            <div class="text-gray-500 text-sm">{{ Str::limit($project->description, 36, ' (...)') }}</div>
+                            <div class="text-gray-500 text-sm">{!! Str::limit($project->description, 36, ' (...)') !!}</div>
                         </div>
                         <div class="flex gap-1">
                             <a href="#" class="p-2 bg-gray-50">
