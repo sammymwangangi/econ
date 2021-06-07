@@ -4,214 +4,88 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Project;
+use App\Models\Team;
+use Livewire\WithPagination;
+use Auth;
 
 class Projects extends Component
 {
-    public $projects, $name, $description, $project_id;
-
-    public $isOpen = 0;
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function render()
-
-    {
-
-        $this->projects = Project::all();
-
-        return view('livewire.projects');
-
-    }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function create()
-
-    {
-
-        $this->resetInputFields();
-
-        $this->openModal();
-
-    }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function openModal()
-
-    {
-
-        $this->isOpen = true;
-
-    }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function closeModal()
-
-    {
-
-        $this->isOpen = false;
-
-    }
-
-  
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    private function resetInputFields(){
-
-        $this->name = '';
-
-        $this->description = '';
-
-        $this->project_id = '';
-
-    }
-
-     
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function store()
-
-    {
-
-        $this->validate([
-
-            'name' => 'required',
-
-            'description' => 'required',
-
-        ]);
-
-   
-
-        Project::updateOrCreate(['id' => $this->project_id], [
-
-            'name' => $this->name,
-
-            'description' => $this->description
-
-        ]);
-
-  
-
-        session()->flash('message', 
-
-            $this->project_id ? 'Project Updated Successfully.' : 'Project Created Successfully.');
-
-  
-
-        $this->closeModal();
-
-        $this->resetInputFields();
-
-    }
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function edit($id)
-
-    {
-
-        $project = Project::findOrFail($id);
-
-        $this->project_id = $id;
-
-        $this->name = $project->name;
-
-        $this->description = $project->description;
+    use WithPagination;
+
+    public $sortBy = 'id';
+    public $sortAsc = true;
+    public $project;
+    public Team $team;
+    public $confirmingProjectDeletion = false;
+    public $confirmingProjectAdd = false;
 
     
+    // public function mount($id)
+    // {
+    //     $this->team = Team::findOrFail($id);
+    // }
 
-        $this->openModal();
+    protected $rules = [
+        'project.name' => 'required|string|min:4',
+        'project.description' => 'required',
+    ];
 
+    public function render()
+    {
+        $teams = Team::all();
+        $projects = Project::orderBy( $this->sortBy, $this->sortAsc ? 'ASC' : 'DESC');
+ 
+        $projects = $projects->paginate(10);
+ 
+        return view('livewire.projects', [
+            'projects' => $projects,
+            'teams' => $teams,
+        ]);
     }
 
-     
-
-    /**
-
-     * The attributes that are mass assignable.
-
-     *
-
-     * @var array
-
-     */
-
-    public function delete($id)
-
+    public function confirmProjectDeletion( $id) 
     {
-
-        Project::find($id)->delete();
-
-        session()->flash('message', 'Project Deleted Successfully.');
-
+        $this->confirmingProjectDeletion = $id;
+    }
+ 
+    public function deleteProject( Project $project) 
+    {
+        $project->delete();
+        $this->confirmingProjectDeletion = false;
+        session()->flash('message', 'Project Deleted Successfully');
+    }
+ 
+    public function confirmProjectAdd() 
+    {
+        $this->reset(['project']);
+        $this->confirmingProjectAdd = true;
+    }
+ 
+    public function confirmProjectEdit(Project $project) 
+    {
+        $this->resetErrorBag();
+        $this->project = $project;
+        $this->confirmingProjectAdd = true;
+    }
+ 
+    public function saveProject() 
+    {
+        $this->validate();
+ 
+        if( isset( $this->project->id)) {
+            $this->project->save();
+            session()->flash('message', 'Project Saved Successfully');
+        } else {
+            auth()->user()->projects()->create([
+                'name' => $this->project['name'],
+                'description' => $this->project['description'],
+                'team_id' => $this->project['team_id'],
+            ]);
+            $this->project->save();
+            session()->flash('message', 'Project Added Successfully');
+        }
+ 
+        $this->confirmingProjectAdd = false;
+ 
     }
 }

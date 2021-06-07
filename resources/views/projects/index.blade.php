@@ -28,7 +28,7 @@
                     <div class="flex flex-col space-y-10">
                         <div>
                             <div class="flex items-center">
-                                <h1 class="font-bold">{{$project->name}}</h1>
+                                <a href="{{route('projects.show', $project->id)}}" class="font-semibold">{{$project->name}}</a>
                             </div>
                             <div class="text-gray-500 text-sm">{!! Str::limit($project->description, 36, ' (...)') !!}</div>
                         </div>

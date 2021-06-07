@@ -30,6 +30,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
+    return view('projects');
+})->name('projects');
+
 Route::resources([
     'wiki' => PostController::class,
     'categories' => CategoryController::class,
