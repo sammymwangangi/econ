@@ -19,7 +19,9 @@
         </div>
     </x-slot>
     @foreach($projects as $project)
-    	<div class="px-4 py-4 font-extrabold text-xl">{{$project->name}}/ Task List</div>
+    	<div class="px-4 py-4 font-extrabold text-xl">
+            <a href="{{route('projects.show', $project->id)}}" class="font-semibold">{{$project->name}}</a>/ Task List
+        </div>
         @forelse($project->tasks as $task)
         	<div class="px-4 mb-4">
         		<div class="h-auto items-center shadow rounded bg-white p-4 mb-4">

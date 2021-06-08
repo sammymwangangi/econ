@@ -88,7 +88,9 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teams = Team::all();
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project','teams'));
     }
 
     /**
@@ -100,7 +102,26 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:projects|max:255',
+            'description' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('taskmanager/projects')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $project = Project::findOrFail($id);
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->team_id = $request->team_id;
+        $project->user_id = Auth::id();
+        $project->update();
+
+        return redirect('taskmanager/projects')
+            ->with('success', 'Project updated successfully.');
     }
 
     /**
@@ -111,6 +132,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect('taskmanager/projects')->with('success', 'Project Data is successfully deleted');
     }
 }

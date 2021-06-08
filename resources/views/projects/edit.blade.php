@@ -5,7 +5,8 @@
 		  <div class="text-xl leading-wide">
 		  	<a class="hover:text-red-500" href="{{route('projects.index')}}">Projects</a>
 		  </div>/
-		  <div class="text-red-500 text-xl">Create</div>
+		  <div class="hover:text-red-500 text-xl">{{$project->name}}</div>/
+          <div class="text-red-500 text-xl">edit</div>
 		</div>
 
     </x-slot>
@@ -15,18 +16,18 @@
             <div class="w-5/6">
                 <div class="flex flex-col break-words rounded-lg shadow-md">
                     <div class="font-semibold bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-3 px-6 mb-0 rounded-t-lg">
-                        {{ __('Add Project') }}
+                        {{ __('Edit Project') }}
                     </div>
 
-                    <form class="w-full p-6 mb-4" method="POST" action="{{route('projects.update')}}">
+                    <form class="w-full p-6 mb-4" method="POST" action="{{route('projects.update', $project->id)}}">
                         @csrf
-
+                        @method('PATCH')
                         <div class="flex flex-wrap mb-6">
                             <label for="name" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
                                 {{ __('Name') }}:
                             </label>
 
-                            <input id="name" type="text" class="form-input w-full rounded @error('name')  border-red-500 @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" class="form-input w-full rounded @error('name')  border-red-500 @enderror" name="name" value="{{ $project->name }}" required autocomplete="name" autofocus>
 
                             @error('name')
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -42,7 +43,7 @@
                                 </label>
                             </div>
                             <div>
-                                <textarea id="description" rows="2" class="ckeditor w-full rounded @error('description') border-red-500 @enderror" name="description" value="{{ old('description') }}" required></textarea>
+                                <textarea id="description" rows="2" class="ckeditor w-full rounded @error('description') border-red-500 @enderror" name="description" required>{{ $project->description }}</textarea>
                                 <p class="mt-2 text-sm text-gray-500">
                                     Brief description this project.
                                 </p>

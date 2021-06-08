@@ -95,7 +95,10 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $projects = Project::all();
+        $users = User::all()->except([1]);
+        return view('tasks.edit', compact('task','projects','users'));
     }
 
     /**
@@ -107,7 +110,36 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:tasks|max:255',
+            'description' => 'required',
+            'status' => 'required',
+            'priority' => 'required',
+            'start_at' => 'date',
+            'end_at' => 'date',
+            'assigned_to' => 'nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('taskmanager/tasks')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $task = Task::findOrFail($id);
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->status = $request->status;
+        $task->priority = $request->priority;
+        $task->start_at = $request->start_at;
+        $task->end_at = $request->end_at;
+        $task->assigned_to = $request->assigned_to;
+        $task->project_id = $request->project_id;
+        $task->user_id = Auth::id();
+        $task->save();
+
+        return redirect('taskmanager/tasks')
+            ->with('success', 'Task Updated successfully.');
     }
 
     /**
@@ -118,6 +150,9 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect('taskmanager/tasks')->with('success', 'Task Data is successfully deleted');
     }
 }

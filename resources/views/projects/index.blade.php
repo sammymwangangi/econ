@@ -18,7 +18,9 @@
             </div>
         </div>
     </x-slot>
+
     @foreach($teams as $team)
+    {{-- @if($team->projects->count() > 0) --}}
 	<div class="px-4 py-4 font-extrabold text-xl">{{$team->name}}</div>
 	<div class="lg:grid lg:grid-cols-4 gap-4 px-4 py-4">
         @forelse($team->projects as $project)
@@ -33,7 +35,7 @@
                             <div class="text-gray-500 text-sm">{!! Str::limit($project->description, 36, ' (...)') !!}</div>
                         </div>
                         <div class="flex gap-1">
-                            <a href="#" class="p-2 bg-gray-50">
+                            <a href="{{route('tasks.index')}}" class="p-2 bg-gray-50">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </a>
                             <a href="#" class="p-2 bg-gray-50">
@@ -59,5 +61,6 @@
             <div class="text-red-500 text-xl font-bold leading-tight">No Projects Found!</div>
         @endforelse
 	</div>
+    {{-- @endif --}}
     @endforeach
 </x-task-layout>

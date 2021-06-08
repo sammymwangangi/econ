@@ -26,4 +26,18 @@ class CommentsController extends Controller
    
         return back();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+       return back()->with('success', 'Comment deleted successfully');
+    }
 }
