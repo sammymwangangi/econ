@@ -52,7 +52,9 @@
         </div>
         <div class="bg-white shadow-lg rounded px-8 py-4 my-4 text-gray-600">{!! $project->description !!}</div>
     </div>
-
+    <div class="px-4 py-4 font-extrabold text-xl">
+        <div class="font-semibold">Task List</div>
+    </div>
     @forelse($tasks as $task)
         <div class="px-4 mb-4">
             <div class="h-auto items-center shadow rounded bg-white p-4 mb-4">
