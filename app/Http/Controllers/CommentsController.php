@@ -24,7 +24,7 @@ class CommentsController extends Controller
     
         Comment::create($input);
    
-        return back();
+        return back()->withSuccessMessage('Comment Successful!');
     }
 
     /**
@@ -38,6 +38,6 @@ class CommentsController extends Controller
         $comment = Comment::findOrFail($id);
         $comment->delete();
 
-       return back()->with('success', 'Comment deleted successfully');
+       return back()->withSuccessMessage('Comment Deleted Successfully!');
     }
 }

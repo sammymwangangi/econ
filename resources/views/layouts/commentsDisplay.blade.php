@@ -27,15 +27,27 @@
                             <!-- Modal -->
                             <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-10/12 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
                                 <!-- Title -->
-                                <span class="font-bold block text-2xl mb-3">🍺 Beer, beer, beer </span>
+                                <span class="font-bold block text-2xl mb-3">Edit Comment </span>
                                 <!-- Some beer 🍺 -->
-                                <p class="mb-5">beer, beer, beer... beer, beer, beer... beer, beer, beer... beer, beer, beer...</p>
-                                <p>beer, beer, beer... beer, beer, beer... beer, beer, beer... beer, beer, beer... beer, beer, beer... beer, beer, beer... beer, beer, beer...</p>
+                                <form x-show="open"
+                                    @click.away="open = false" method="post" action="{{ route('comments.store') }}" enctype="multipart/form-data" class="my-2">
+                                        @csrf
+                                        <div class="form-group">
+                                            {{-- <input type="text" name="body" class="form-control rounded" /> --}}
+                                            <textarea id="body" class="ckeditor w-full rounded border-gray-200 @error('body') border-red-500 @enderror" name="body" value="{{ old('body') }}" required>{{$comment->body}}</textarea>
+                                            <input type="hidden" name="task_id" value="{{ $task_id }}" />
+                                            <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                        </div>
+                                        <div class="py-2">
+                                            <input type="submit" class="flex items-center px-4 py-1 text-sm text-red-600 font-semibold rounded-full border border-red-200 hover:text-white bg-white hover:bg-red-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 cursor-pointer" value="Comment" />
+                                        </div>
+                                </form>
+                                        <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Cancel</button>
 
                                 <!-- Buttons -->
                                 <div class="text-right space-x-5 mt-5">
                                     <button @click="showModal = !showModal" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">Cancel</button>
-                                    <a href="https://www.buymeacoffee.com/fricki" target="_blank" class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">🍺 Buy me a beer!</a>
+                                    <button class="px-4 py-2 text-sm bg-white rounded-xl border transition-colors duration-150 ease-linear border-gray-200 text-gray-500 focus:outline-none focus:ring-0 font-bold hover:bg-gray-50 focus:bg-indigo-50 focus:text-indigo">comment</button>
                                 </div>
                             </div>
                         </div>
