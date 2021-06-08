@@ -54,7 +54,12 @@
                 </div>
         	</div>
             @empty
-            <div class="pl-12 text-red-500 text-xl font-bold leading-tight">No Tasks Found!</div>
+            <div class="px-4 mb-4">
+                <div class="h-auto items-center shadow rounded bg-white p-4 mb-4">
+                    No Tasks Found!
+                </div>
+            </div>
+            {{-- <div class="pl-12 text-red-500 text-xl font-bold leading-tight">No Tasks Found!</div> --}}
         @endforelse
     @endforeach
 
