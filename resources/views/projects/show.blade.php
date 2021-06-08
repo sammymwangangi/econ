@@ -52,6 +52,46 @@
         </div>
         <div class="bg-white shadow-lg rounded px-8 py-4 my-4 text-gray-600">{!! $project->description !!}</div>
     </div>
+
+    @forelse($tasks as $task)
+        <div class="px-4 mb-4">
+            <div class="h-auto items-center shadow rounded bg-white p-4 mb-4">
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="flex flex-wrap items-center gap-2">
+                        @include('layouts.status')
+                        <a href="{{route('tasks.show', $task->id)}}" class="font-semibold">{{$task->name}}</a>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2" contenteditable="none">
+                        @if($task->status === 'Completed')
+                            <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                               {{$task->status}}
+                            </button>
+                        @endif
+                        @include('layouts.priority')
+                        @if($task->assigned_to === null)
+                           <button class="hidden flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                                {{$task->assigned_to}}
+                            </button>
+                            @else
+                            <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                                {{$task->assigned_to}}
+                            </button>
+                        @endif
+                        <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                            {{\Carbon\Carbon::parse($task->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($task->ends_at)->format('M d')}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @empty
+        <div class="px-4 mb-4">
+            <div class="h-auto items-center shadow rounded bg-white p-4 mb-4">
+                No Tasks Found!
+            </div>
+        </div>
+        {{-- <div class="pl-12 text-red-500 text-xl font-bold leading-tight">No Tasks Found!</div> --}}
+    @endforelse
     <div class="mb-4"></div>
 
 </x-task-layout>
