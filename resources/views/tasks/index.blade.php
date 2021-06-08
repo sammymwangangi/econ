@@ -47,7 +47,7 @@
                                 </button>
                             @endif
         	                <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-        	                    {{\Carbon\Carbon::parse($task->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($task->ends_at)->format('M d')}}
+        	                    {!! \Carbon\Carbon::parse($task->start_at)->format('M d') !!} - {!! \Carbon\Carbon::parse($task->ends_at)->format('M d') !!}
         	                </button>
                         </div>
                     </div>

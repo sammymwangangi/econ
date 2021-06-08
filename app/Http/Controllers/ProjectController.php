@@ -64,7 +64,7 @@ class ProjectController extends Controller
         $project->save();
 
         return redirect()->route('projects.index')
-            ->with('success', 'Project created successfully.');
+            ->withSuccessMessage('Project added successfully.');
 
     }
 
@@ -122,7 +122,7 @@ class ProjectController extends Controller
         $project->update();
 
         return redirect('taskmanager/projects')
-            ->with('success', 'Project updated successfully.');
+            ->withSuccessMessage('Project Updated Successfully!');
     }
 
     /**
@@ -136,6 +136,6 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return redirect('taskmanager/projects')->with('success', 'Project Data is successfully deleted');
+        return redirect('taskmanager/projects')->withSuccessMessage('Project was DELETED SUCCESSFULLY!');
     }
 }

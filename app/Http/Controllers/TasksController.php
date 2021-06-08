@@ -20,6 +20,7 @@ class TasksController extends Controller
     {
         // $tasks = Task::all();
         $projects = Project::with('tasks')->get();
+
         return view('tasks.index', compact('projects'));
     }
 
@@ -72,7 +73,7 @@ class TasksController extends Controller
         $task->save();
 
         return redirect()->route('tasks.index')
-            ->with('success', 'Task created successfully.');
+            ->withSuccessMessage('Task added successfully.');
     }
 
     /**
@@ -139,7 +140,7 @@ class TasksController extends Controller
         $task->save();
 
         return redirect('taskmanager/tasks')
-            ->with('success', 'Task Updated successfully.');
+            ->withSuccessMessage('Task Updated Successfully!');
     }
 
     /**
@@ -153,6 +154,6 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
         $task->delete();
 
-        return redirect('taskmanager/tasks')->with('success', 'Task Data is successfully deleted');
+        return redirect('taskmanager/tasks')->withSuccessMessage('Task was DELETED SUCCESSFULLY!');
     }
 }

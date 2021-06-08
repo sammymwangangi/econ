@@ -45,7 +45,7 @@
         </div>
 
         @stack('modals')
-
+        @include('sweetalert::alert')
         @livewireScripts
         {{-- <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script> --}}
         <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
@@ -80,5 +80,6 @@
                 }
             });
         </script>
+
     </body>
 </html>
