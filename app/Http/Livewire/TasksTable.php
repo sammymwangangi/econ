@@ -42,7 +42,7 @@ class TasksTable extends LivewireDatatable
             Column::name('priority')->filterable(['None', 'Low', 'Medium', 'High'])->searchable(),
             Column::name('status')->filterable(['No Progress', 'In Progress', 'Complete'])->searchable(),
 
-            DateColumn::name('start_at')->label('STARTS DATE'),
+            DateColumn::name('start_at')->label('STARTING DATE'),
             DateColumn::name('end_at')->label('DUE DATE'),
             DateColumn::name('created_at'),
 
