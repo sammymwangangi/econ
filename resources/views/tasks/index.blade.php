@@ -19,7 +19,7 @@
         </div>
     </x-slot>
 
-    <div class="px-4 py-4 font-extrabold text-xl">
+    <div class="px-4 py-4">
         {{-- <livewire:datatable 
             model="App\Models\Task" 
             with="user, project" 

@@ -19,9 +19,13 @@
         </div>
     </x-slot>
 
-    @foreach($teams as $team)
+<div class="px-4 py-4">
+    <livewire:projects-table />
+</div>
+
+    {{-- @foreach($teams as $team) --}}
     {{-- @if($team->projects->count() > 0) --}}
-	<div class="px-4 py-4 font-extrabold text-xl">{{$team->name}}</div>
+	{{-- <div class="px-4 py-4 font-extrabold text-xl">{{$team->name}}</div>
 	<div class="lg:grid lg:grid-cols-4 gap-4 px-4 py-4">
         @forelse($team->projects as $project)
             <div>
@@ -60,7 +64,7 @@
             @empty
             <div class="text-red-500 text-xl font-bold leading-tight">No Projects Found!</div>
         @endforelse
-	</div>
+	</div> --}}
     {{-- @endif --}}
-    @endforeach
+    {{-- @endforeach --}}
 </x-task-layout>

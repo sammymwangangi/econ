@@ -28,23 +28,36 @@ class TasksTable extends LivewireDatatable
     public function columns()
     {
         return [
-            NumberColumn::name('id'),
+            NumberColumn::name('id')
+                ->filterable(),
 
-            Column::name('name')->searchable(),
+            Column::name('name')
+                ->filterable()
+                ->searchable(),
 
             Column::name('user.name')
+                ->filterable()
+                ->searchable()
                 ->label('USER'),
 
             Column::name('project.name')
+                ->filterable()
+                ->searchable()
                 ->label('PROJECT'),
-
-            Column::name('assigned_to'),
+            Column::name('assigned_to')
+                ->filterable()
+                ->searchable(),
             Column::name('priority')->filterable(['None', 'Low', 'Medium', 'High'])->searchable(),
             Column::name('status')->filterable(['No Progress', 'In Progress', 'Complete'])->searchable(),
 
-            DateColumn::name('start_at')->label('STARTING DATE'),
-            DateColumn::name('end_at')->label('DUE DATE'),
-            DateColumn::name('created_at'),
+            DateColumn::name('start_at')
+                ->filterable()
+                ->label('STARTING DATE'),
+            DateColumn::name('end_at')
+                ->filterable()
+                ->label('DUE DATE'),
+            DateColumn::name('created_at')
+                ->filterable(),
 
             Column::callback(['id', 'name'], function ($id, $name) {
                 return view('tasks.table-actions', ['id' => $id, 'name' => $name]);
