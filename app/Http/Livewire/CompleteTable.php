@@ -18,8 +18,6 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 class CompleteTable extends LivewireDatatable
 {
     public $model = Task::class;
-    public $hideable = 'select';
-    public $exportable = true;
 
     public function builder()
     {
@@ -35,33 +33,22 @@ class CompleteTable extends LivewireDatatable
             Column::callback(['id', 'name'], function ($id, $name) {
                 return view('tasks.table-actions', ['id' => $id, 'name' => $name]);
             }),
-            Column::name('name')
-                ->filterable()
-                ->searchable(),
+            Column::name('name'),
 
             Column::name('user.name')
-                ->filterable()
-                ->searchable()
                 ->label('USER'),
 
             Column::name('project.name')
-                ->filterable()
-                ->searchable()
                 ->label('PROJECT'),
-            Column::name('assigned_to')
-                ->filterable()
-                ->searchable(),
-            Column::name('priority')->filterable(['None', 'Low', 'Medium', 'High'])->searchable(),
-            Column::name('status')->filterable(['No Progress', 'In Progress', 'Complete'])->searchable(),
+            Column::name('assigned_to'),
+            Column::name('priority'),
+            Column::name('status'),
 
             DateColumn::name('start_at')
-                ->filterable()
                 ->label('STARTING DATE'),
             DateColumn::name('end_at')
-                ->filterable()
                 ->label('DUE DATE'),
-            DateColumn::name('created_at')
-                ->filterable(),
+            DateColumn::name('created_at'),
 
         ];
     }
