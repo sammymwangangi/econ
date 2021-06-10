@@ -14,7 +14,7 @@ class ManagerController extends Controller
 {
     public function index()
     {
-        $tasks = Task::paginate(3);
+        $tasks = Task::where('user_id', '=', Auth::user()->id)->paginate(5);
         // $teams = Team::with('projects')->get();
         $projects = Project::paginate(4);
         return view('manager.index', compact('tasks','projects'));

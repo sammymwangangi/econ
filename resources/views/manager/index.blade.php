@@ -1,8 +1,8 @@
 <x-task-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Hola {{ Auth::user()->name }}!
+            <h2 class="font-semibold text-lg text-gray-800 leading-tight">
+                Namaste, {{ Auth::user()->name }}!
             </h2>
             <div>
                 <a href="{{route('projects.create')}}" class="flex items-center px-4 py-1 text-sm text-red-600 font-semibold rounded-full border border-red-200 hover:text-white hover:bg-red-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
@@ -16,14 +16,11 @@
         </div>
     </x-slot>
 
-    <div class="lg:flex gap-4 px-4 py-4">
+    <div class="lg:flex gap-4 px-4 py-4 text-sm">
         <div class="flex-1 flex flex-col justify-between shadow rounded bg-white p-4 mb-4" style="height: 28rem;">
             <div>
                 <div class="flex items-center py-4">
-                    <h1 class="font-bold text-gray-700 text-lg">My Work</h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                    </svg>
+                    <h1 class="font-bold text-gray-700">My Work</h1>
                 </div>
                 <div class="flex flex-col divide-y py-2">
                     <div class="flex justify-between py-2 mb-2">
@@ -39,29 +36,29 @@
                     </div>
                     @foreach($tasks as $task)
                     <div class="flex-col hover:bg-red-50">
-                        <div class="flex flex-wrap items-center gap-2 px-4 py-2">
+                        <div class="flex items-center gap-2 px-2 pt-2">
                             @include('layouts.status')
                             <a href="{{route('tasks.show', $task->id)}}">{{$task->name}}</a>
-                        </div>
-                        <div class="flex flex-wrap items-center gap-2 px-4 py-2">
                             @include('layouts.priority')
-                            <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 uppercase">
+                            <button class="flex flex-shrink-0 items-center px-4 py-1 text-white rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 capitalize text-xs">
                                 {{\Carbon\Carbon::parse($task->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($task->ends_at)->format('M d')}}
                             </button>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 px-4 py-2">
                         </div>
                     </div>
                     @endforeach
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="#" class="text-gray-500 font-semibold">Full Recap</a>
+                <a href="{{route('my-tasks')}}" class="text-gray-500 font-semibold">Full Recap</a>
             </div>
         </div>
         <div class="flex-1 flex flex-col justify-between shadow rounded bg-white p-4 mb-4" style="height: 28rem;">
             <div>
                 
                 <div class="flex items-center py-4">
-                    <h1 class="font-bold text-gray-700 text-lg">Important Updates</h1>
+                    <h1 class="font-bold text-gray-700">Important Updates</h1>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex justify-between py-2 mb-2">
@@ -111,10 +108,7 @@
         <div class="flex-1 flex flex-col justify-between shadow rounded bg-white p-4 mb-4" style="height: 28rem;">
             <div>
                 <div class="flex items-center py-4">
-                    <h1 class="font-bold text-gray-700 text-lg">Projects</h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                    </svg>
+                    <h1 class="font-bold text-gray-700">Projects</h1>
                 </div>
 
                 <hr>
