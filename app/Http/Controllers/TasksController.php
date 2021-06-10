@@ -50,6 +50,7 @@ class TasksController extends Controller
             'status' => 'required',
             'priority' => 'required',
             'start_at' => 'required',
+            'end_at' => 'required',
             'assigned_to' => 'nullable',
         ]);
 

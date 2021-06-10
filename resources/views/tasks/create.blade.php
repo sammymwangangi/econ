@@ -135,7 +135,7 @@
                                 {{ __('Due Date') }}:
                             </label>
 
-                            <input id="end_at" type="date" class="form-input w-full rounded @error('end_at')  border-red-500 @enderror" name="end_at" value="{{ old('end_at') }}">
+                            <input id="end_at" type="date" class="form-input w-full rounded @error('end_at')  border-red-500 @enderror" name="end_at" value="{{ old('end_at') }}" required>
 
                             @error('end_at')
                                 <p class="text-red-500 text-xs italic mt-4">
