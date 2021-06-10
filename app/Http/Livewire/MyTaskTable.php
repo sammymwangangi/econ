@@ -15,7 +15,7 @@ use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class TasksTable extends LivewireDatatable
+class MyTaskTable extends LivewireDatatable
 {
     public $model = Task::class;
     public $hideable = 'select';
@@ -23,14 +23,14 @@ class TasksTable extends LivewireDatatable
 
     public function builder()
     {
-        return Task::query();
+        return Task::where('tasks.user_id', '=', Auth::user()->id)
+            ->where('status', '=', 'No Progress');
     }
 
     public function columns()
     {
         return [
-            NumberColumn::name('id')
-                ->filterable(),
+            NumberColumn::name('id'),
 
             Column::callback(['id', 'name'], function ($id, $name) {
                 return view('tasks.table-actions', ['id' => $id, 'name' => $name]);

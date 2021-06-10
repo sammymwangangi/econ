@@ -25,6 +25,9 @@ class ProjectsTable extends LivewireDatatable
         return [
             NumberColumn::name('id'),
 
+            Column::callback(['id', 'name'], function ($id, $name) {
+                return view('projects.table-actions', ['id' => $id, 'name' => $name]);
+            }),
             Column::name('name')
                 ->filterable()
                 ->searchable(),
@@ -41,9 +44,6 @@ class ProjectsTable extends LivewireDatatable
             DateColumn::name('created_at')
                 ->filterable(),
 
-            Column::callback(['id', 'name'], function ($id, $name) {
-                return view('projects.table-actions', ['id' => $id, 'name' => $name]);
-            })
         ];
 
     }

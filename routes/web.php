@@ -34,6 +34,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
     return view('projects');
 })->name('projects');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/taskmanager/my-tasks', function () {
+    return view('tasks.my-tasks');
+})->name('my-tasks');
+
 Route::resources([
     'wiki' => PostController::class,
     'categories' => CategoryController::class,
