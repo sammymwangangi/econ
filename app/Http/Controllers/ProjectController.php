@@ -51,7 +51,7 @@ class ProjectController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('taskmanager/projects')
+            return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
         }

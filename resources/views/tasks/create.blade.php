@@ -9,7 +9,6 @@
 		</div>
 
     </x-slot>
-
     <div class="container mx-auto mt-8 mb-6">
         <div class="flex flex-wrap justify-center">
             <div class="w-5/6">
@@ -17,6 +16,7 @@
                     <div class="font-semibold bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-3 px-6 mb-0 rounded-t-lg">
                         {{ __('Add Tasks') }}
                     </div>
+                    <x-jet-validation-errors class="px-6 mb-4 mt-2" />    
 
                     <form class="w-full p-6" method="POST" action="{{route('tasks.store')}}">
                         @csrf
@@ -121,7 +121,7 @@
                                 {{ __('Start Date') }}:
                             </label>
 
-                            <input id="start_at" type="date" class="form-input w-full rounded @error('start_at')  border-red-500 @enderror" name="start_at" value="{{ old('start_at') }}">
+                            <input id="start_at" type="date" class="form-input w-full rounded @error('start_at')  border-red-500 @enderror" name="start_at" value="{{ old('start_at') }}" required autofocus>
 
                             @error('start_at')
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -135,7 +135,7 @@
                                 {{ __('Due Date') }}:
                             </label>
 
-                            <input id="end_at" type="date" class="form-input w-full rounded @error('end_at')  border-red-500 @enderror" name="end_at" value="{{ old('end_at') }}">
+                            <input id="end_at" type="date" class="form-input w-full rounded @error('end_at')  border-red-500 @enderror" name="end_at" value="{{ old('end_at') }}" required>
 
                             @error('end_at')
                                 <p class="text-red-500 text-xs italic mt-4">

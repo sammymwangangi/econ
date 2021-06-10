@@ -17,7 +17,7 @@
                     <div class="font-semibold bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-3 px-6 mb-0 rounded-t-lg">
                         {{ __('Add Project') }}
                     </div>
-
+                    <x-jet-validation-errors class="px-6 mb-4 mt-2" />
                     <form class="w-full p-6 mb-4" method="POST" action="{{route('projects.store')}}">
                         @csrf
 

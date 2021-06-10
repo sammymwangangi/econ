@@ -49,13 +49,12 @@ class TasksController extends Controller
             'description' => 'required',
             'status' => 'required',
             'priority' => 'required',
-            'start_at' => 'date',
-            'end_at' => 'date',
+            'start_at' => 'required',
             'assigned_to' => 'nullable',
         ]);
 
         if ($validator->fails()) {
-            return redirect('taskmanager/tasks')
+            return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
         }
