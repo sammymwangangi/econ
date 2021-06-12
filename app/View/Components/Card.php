@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use App\Models\Project;
 use App\Models\Task;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class Card extends Component
 {
@@ -25,6 +26,11 @@ class Card extends Component
      */
     public function render()
     {
-        return view('components.card', ['projects' => Project::all(), 'tasks' => Task::all(), 'tasksCompleted' => Task::where('status', '=', 'Complete'), 'tasksInProgress' => Task::where('status', '=', 'In Progress')]);
+        return view('components.card', [
+            'projects' => Project::all(), 
+            'tasks' => Task::all(), 
+            'tasksCompleted' => Task::where('status', '=', 'Complete'), 
+            'tasksInProgress' => Task::where('status', '=', 'In Progress')
+        ]);
     }
 }
