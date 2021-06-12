@@ -9,6 +9,8 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\CKEditorController;
+use App\Models\Project;
+use App\Models\Task;
 // use App\Http\Livewire\Projects;
 
 /*
@@ -27,7 +29,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $projects = Project::all();
+    $tasks = Task::all();
+    return view('dashboard', compact('projects','tasks'));
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
