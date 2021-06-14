@@ -138,13 +138,17 @@
     </div>
 
     <div class="px-4 py-4">
-        <div class="h-96 shadow rounded bg-white p-4 mb-4">
+        <div class="h-auto shadow rounded bg-white p-4 mb-4">
             <div class="flex items-center">
-                <h1 class="font-extrabold text-xl">Weekly Overview</h1>
+                <h1 class="font-extrabold text-xl">Monthly Overview</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                 </svg>
             </div>
+            <livewire:tasks-calendar 
+                year="2021"
+                month="5"
+            />
         </div>
     </div>
 </x-task-layout>
