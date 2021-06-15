@@ -41,8 +41,8 @@ class TaskAdded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('A Task has been assigned to you.')
+                    ->action('View the task', url('/taskmanager/tasks'))
                     ->line('Thank you for using our application!');
     }
 

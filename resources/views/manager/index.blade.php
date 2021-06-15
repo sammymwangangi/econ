@@ -146,8 +146,7 @@
                 </svg>
             </div>
             <livewire:tasks-calendar 
-                year="2021"
-                month="5"
+                before-calendar-view="manager/header"
             />
         </div>
     </div>

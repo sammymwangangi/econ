@@ -7,9 +7,18 @@ use Asantibanez\LivewireCalendar\LivewireCalendar;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use App\Models\Task;
+use App\Models\Project;
+use App\Models\User;
+use Auth;
 
 class TasksCalendar extends LivewireCalendar
 {
+    public $isModalOpen = false;
+
+    public $selectedTask = null;
+
+    public $newTask;
+
     public function events(): Collection
     {
         return Task::query()
@@ -64,7 +73,12 @@ class TasksCalendar extends LivewireCalendar
             'title' => '',
             'notes' => '',
             'start_at' => '',
-            'priority' => 'normal',
+            'end_at' => '',
+            'status' => '',
+            'assigned_to' => '',
+            'priority' => '',
+            'project_id' => '',
+            'user_id' => Auth::id(),
         ];
     }
 
@@ -95,8 +109,12 @@ class TasksCalendar extends LivewireCalendar
 
     public function render()
     {
+        $projects = Project::all();
+        $users = User::all();
         return parent::render()->with([
-            'unscheduledEvents' => $this->unscheduledEvents()
+            'unscheduledEvents' => $this->unscheduledEvents(),
+            'users' => $users,
+            'projects' => $projects
         ]);
     }
 }

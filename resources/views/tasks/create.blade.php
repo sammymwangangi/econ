@@ -63,6 +63,7 @@
                                 </label>
                             </div>
                             <div>
+                                {{-- <iframe src="http://econ.test/taskmanager/projects/create" id="assetFrame" style="width:100%; height: 100%;" frameborder="0"></iframe> --}}
                                 <textarea id="description" rows="2" class="ckeditor w-full rounded @error('description') border-red-500 @enderror" name="description" value="{{ old('description') }}" required></textarea>
                                 <p class="mt-2 text-sm text-gray-500">
     				                Brief description about the task.

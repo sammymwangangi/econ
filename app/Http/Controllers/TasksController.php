@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\TaskAdded;
 
 class TasksController extends Controller
 {
@@ -60,6 +61,8 @@ class TasksController extends Controller
                         ->withInput();
         }
 
+        $user = User::first();
+
         $task = new task();
         $task->name = $request->name;
         $task->description = $request->description;
@@ -71,6 +74,8 @@ class TasksController extends Controller
         $task->project_id = $request->project_id;
         $task->user_id = Auth::id();
         $task->save();
+
+        $user->notify(new TaskAdded);
 
         return redirect()->route('tasks.index')
             ->withSuccessMessage('Task added successfully.');
