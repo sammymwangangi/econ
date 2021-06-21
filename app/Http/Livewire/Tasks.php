@@ -15,12 +15,17 @@ class Tasks extends Component
 
     public function refreshChildren()
     {
-        $this->emit('refreshChildren');
+       
     }
-    public function render()
+     public function render()
     {
         return view('livewire.tasks', [
             'tasks' => Task::where('user_id', '=', Auth::user()->id)->paginate(5)
         ]);
+
+        // $tasks = Task::where('user_id', '=', Auth::user()->id)->paginate(5);
+        // return view('livewire.tasks', [
+        //     'tasks' => $tasks
+        // ]);
     }
 }

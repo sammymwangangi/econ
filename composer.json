@@ -20,7 +20,8 @@
         "mediconesystems/livewire-datatables": "^0.4.3",
         "rappasoft/laravel-livewire-tables": "^1.8",
         "realrashid/sweet-alert": "^3.2",
-        "santigarcor/laratrust": "^6.3"
+        "santigarcor/laratrust": "^6.3",
+        "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

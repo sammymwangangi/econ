@@ -36,11 +36,13 @@
                         {{ __('My Tasks') }}
                     </x-jet-nav-link>
                 </div>
+                @role('super-admin|admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ url('#') }}" :active="request()->routeIs('wiki.index')">
                         {{ __('Reports') }}
                     </x-jet-nav-link>
                 </div>
+                @endrole
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -63,6 +65,7 @@
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
+                @role('admin')
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
@@ -112,6 +115,7 @@
                         </x-jet-dropdown>
                     </div>
                 @endif
+                @endrole
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
@@ -143,6 +147,11 @@
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
+                            @role('super-admin')
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('User Management') }}
+                            </x-jet-dropdown-link>
+                            @endrole
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
