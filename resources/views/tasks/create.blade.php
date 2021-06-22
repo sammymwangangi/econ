@@ -18,7 +18,7 @@
                     </div>
                     <x-jet-validation-errors class="px-6 mb-4 mt-2" />    
 
-                    <form class="w-full p-6" method="POST" action="{{route('tasks.store')}}">
+                    <form class="w-full p-6" method="POST" action="{{route('tasks.store')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="flex flex-wrap mb-6">
@@ -161,6 +161,21 @@
                                     {{ $message }}
                                 </p>
                             @enderror
+                        </div>
+
+                        <div class="flex flex-wrap mb-6">
+                            <label for="taskfile" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+                                {{ __('Upload File') }}:
+                            </label>
+
+                            <input id="taskfile" type="file" class="form-input w-full rounded @error('taskfile')  border-red-500 @enderror" name="taskfile" value="{{ old('taskfile') }}" required>
+
+                            @error('taskfile')
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                            {{-- <livewire:task-file /> --}}
                         </div>
 
                         <div class="flex flex-wrap">

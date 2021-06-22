@@ -24,6 +24,7 @@ class CreateTasksTable extends Migration
             $table->date('start_at');
             $table->date('end_at');
             $table->string('priority');
+            $table->string('taskfile');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');

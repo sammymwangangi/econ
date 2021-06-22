@@ -13,6 +13,8 @@ class Task extends Model
 
     protected $dates = ['deleted_at', 'start_at', 'end_at'];
 
+    protected $guarded = [];
+
     protected $fillable = [
         'name',
         'description',
@@ -21,6 +23,7 @@ class Task extends Model
         'start_at',
         'end_at',
         'priority',
+        'taskfile',
     ];
 
     public function project(){

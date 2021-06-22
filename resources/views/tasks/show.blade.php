@@ -25,14 +25,16 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                     Edit
                 </a>
-                {{-- <form action="{{ route('tasks.destroy', $task->id)}}" method="post">
+                @role('super-admin')
+                <form action="{{ route('tasks.destroy', $task->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                     <button type="submit" class="flex items-center gap-2 rounded-full bg-white px-3 py-1 my-2 mx-4 text-red-600 text-sm focus:outline-none">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         Delete
                     </button>
-                </form> --}}
+                </form>
+                @endrole
             @endif
         </div>
         <hr class="my-4">
@@ -87,7 +89,9 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
             </div>
         </div>
-
+        <div class="px-8 py-1 bg-white text-base">
+            <img src="{{url('/task_files/'.$task->taskfile)}}" width="100" height="100" alt="task-file">
+        </div>
         <div class="text-gray-500 font-bold">
             <h1 id="comments" class="py-4 text-xl">Comments</h1>
             <hr>
