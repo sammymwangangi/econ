@@ -163,6 +163,21 @@
                             @enderror
                         </div>
 
+                        <div class="flex flex-wrap mb-6">
+                            <label for="taskfile" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+                                {{ __('Upload File') }}:
+                            </label>
+
+                            <input id="taskfile" type="file" class="form-input w-full rounded @error('taskfile')  border-red-500 @enderror" name="taskfile" value="{{ $task->taskfile }}" required>
+
+                            @error('taskfile')
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                            {{-- <livewire:task-file /> --}}
+                        </div>
+
                         <div class="flex flex-wrap">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:ring">
                                 {{ __('Submit') }}

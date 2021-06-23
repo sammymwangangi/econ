@@ -139,12 +139,23 @@ class TasksController extends Controller
             'start_at' => 'date',
             'end_at' => 'date',
             'assigned_to' => 'nullable',
+            'taskfile' => 'image|max:2000',
         ]);
 
         if ($validator->fails()) {
             return redirect('taskmanager/tasks')
                         ->withErrors($validator)
                         ->withInput();
+        }
+
+        // Handle File Upload
+        if($request->hasFile('taskfile')){
+            $imageName = time().'.'.$request->taskfile->extension();
+
+            $request->taskfile->move(public_path('/task_files/'), $imageName);
+
+        } else {
+            $imageName = 'car.png';
         }
 
         $task = Task::findOrFail($id);
@@ -155,6 +166,7 @@ class TasksController extends Controller
         $task->start_at = $request->start_at;
         $task->end_at = $request->end_at;
         $task->assigned_to = $request->assigned_to;
+        $task->taskfile = $imageName;
         $task->project_id = $request->project_id;
         $task->user_id = Auth::id();
         $task->save();
