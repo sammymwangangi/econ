@@ -19,7 +19,7 @@ class TasksTable extends LivewireDatatable
 {
     public $model = Task::class;
     public $hideable = 'select';
-    public $exportable = true;
+    // public $exportable = true;
 
     public function builder()
     {
