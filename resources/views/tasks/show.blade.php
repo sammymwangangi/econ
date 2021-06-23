@@ -90,7 +90,8 @@
             </div>
         </div>
         <div class="px-8 py-1 bg-white text-base">
-            <img src="{{url('/task_files/'.$task->taskfile)}}" width="100" height="100" alt="task-file">
+            {{-- <img src="{{url('/task_files/'.$task->taskfile)}}" width="100" height="100" alt="task-file"> --}}
+            {{$task->taskfile}}
         </div>
         <div class="text-gray-500 font-bold">
             <h1 id="comments" class="py-4 text-xl">Comments</h1>
