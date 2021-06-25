@@ -15,6 +15,8 @@ class Project extends Model
         'team_id',
     ];
 
+    // protected $guarded = [];
+
     public function tasks(){
         return $this->hasMany(Task::class);
     }

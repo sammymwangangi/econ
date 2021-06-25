@@ -20,6 +20,9 @@
     </x-slot>
 
 <div class="px-4 py-4">
+    <livewire:projects />
+</div>
+<div class="px-4 py-4">
     <livewire:projects-table />
 </div>
 </x-task-layout>
