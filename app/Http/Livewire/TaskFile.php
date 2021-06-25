@@ -23,6 +23,6 @@ class TaskFile extends Component
 
     public function render()
     {
-        return view('livewire.task-file');
+        return view('livewire.tasks');
     }
 }

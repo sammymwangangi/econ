@@ -56,6 +56,7 @@
                                     <div class="absolute top-0 right-0 h-3 w-3 text-xs text-white ml-4 my-1 border-2 border-white rounded-full bg-gray-200 z-2 text-center">
                                     </div>
                                 @endif --}}
+                                
                             </div>
                         </x-slot>
                         <x-slot name="content">
