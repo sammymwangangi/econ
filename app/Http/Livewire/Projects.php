@@ -20,6 +20,11 @@ class Projects extends Component
     
     public $showModalForm = false;
 
+    public function refreshChildren()
+    {
+       
+    }
+
     public function showCreateProjectModal()
     {
         $this->showModalForm = true;

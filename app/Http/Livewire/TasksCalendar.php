@@ -77,8 +77,6 @@ class TasksCalendar extends LivewireCalendar
             'status' => '',
             'assigned_to' => '',
             'priority' => '',
-            'project_id' => '',
-            'user_id' => Auth::id(),
         ];
     }
 
@@ -109,12 +107,10 @@ class TasksCalendar extends LivewireCalendar
 
     public function render()
     {
-        $projects = Project::all();
-        $users = User::all();
         return parent::render()->with([
             'unscheduledEvents' => $this->unscheduledEvents(),
-            'users' => $users,
-            'projects' => $projects
+            'projects' => Project::all(),
+            'users' => User::all(),
         ]);
     }
 }
