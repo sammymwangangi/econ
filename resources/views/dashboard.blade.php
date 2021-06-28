@@ -7,6 +7,9 @@
             <div class="p-6 bg-white rounded shadow">
                 {!! $chart->container() !!}
             </div>
+            {{-- <div class="p-6 mt-10 bg-white rounded shadow">
+                {!! $chart2->container() !!}
+            </div> --}}
         </div>
     </div>
 
@@ -16,5 +19,6 @@
 
 
         {{ $chart->script() }}
+        {{-- {{ $chart2->script() }} --}}
 @endpush
 </x-app-layout>

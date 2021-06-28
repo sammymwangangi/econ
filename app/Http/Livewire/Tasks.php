@@ -4,57 +4,140 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Task;
-use Auth;
+use App\Models\Project;
+use App\Models\User;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class Tasks extends Component
 {
     use WithPagination;
-    public $showEditModal = false;
-    public Task $editing;
-    // public $tasks;
+    use WithFileUploads;
 
-    public function rules()
+    public $name,$description,$project_id,$start_at,$end_at,$status,$assigned_to,$priority,$taskfile;
+    public $newTaskFile;
+    public $taskId = null;
+    public $saved = false;
+
+    public $showModalForm = false;
+
+    // public function mount()
+    // {
+    //     $this->name = auth()->user()->name;
+    //     $this->description = auth()->user()->description;
+    // }
+
+    public function updated($field)
     {
-        return [
-            'editing.name' => 'required|min:3',
-        ];
+        if ($field !== 'saved') {
+            $this->saved = false;
+        }
     }
 
-    public function mount()
+    public function showCreateTaskModal()
     {
-        // $this->editing = Task::make(['date' => now()]);
+        $this->showModalForm = true;
     }
 
-    public function edit(Task $task)
+    public function updatedShowModalForm()
     {
-        $this->editing = $task;
-
-        $this->showEditModal = true;
+        $this->reset();
     }
 
-    public function save()
+    public function storeTask()
     {
-        $this->validate();
+        $this->validate([
+          'name' =>'required',
+          'description'  => 'required',
+          'start_at'  => 'required',
+          'end_at'  => 'required',
+          'status'  => 'required',
+          'priority'  => 'required',
+          'taskfile' => 'image|max:1024', // 1MB Max
+        ]);
 
-        $this->editing->save();
+        // $image_name = $this->taskfile->getClientOriginalName();
+        // $this->taskfile->storeAs('public/task_files/', $image_name);
+        $task =new Task();
+        $task->user_id = auth()->user()->id;
+        $task->name = $this->name;
+        $task->description = $this->description;
+        $task->start_at = $this->start_at;
+        $task->end_at = $this->end_at;
+        $task->status = $this->status;
+        $task->priority = $this->priority;
+        $task->assigned_to = $this->assigned_to;
+        $task->project_id = $this->project_id;
+        $task->taskfile = $this->taskfile->store('task_files');
+        $task->save();
+        $this->saved = true;
+        $this->reset();
+        session()->flash('flash.banner', 'Task created Successfully');
+    }
+    public function showEditTaskModal($id)
+    {
+        $this->reset();
+        $this->showModalForm = true;
+        $this->taskId = $id;
+        $this->loadEditForm();
+    }
 
-        $this->showEditModal = false;
+    public function loadEditForm()
+    {
+        $task = Task::findOrFail($this->taskId);
+        $this->name = $task->name;
+        $this->description = $task->description;
+        $this->newTaskFile = $task->taskfile;
+    }
+
+    public function updateTask()
+    {
+        $this->validate([
+          'name' =>'required',
+          'description'  => 'required',
+          'start_at'  => 'required',
+          'end_at'  => 'required',
+          'status'  => 'required',
+          'priority'  => 'required'
+      ]);
+
+        Task::find($this->taskId)->update([
+             'name' => $this->name,
+             'description'  => $this->description,
+             'start_at'  => $this->start_at,
+             'end_at'  => $this->end_at,
+             'status'  => $this->status,
+             'priority'  => $this->priority,
+             'assigned_to'  => $this->assigned_to,
+             'project_id'  => $this->project_id,
+             'taskfile' => $this->taskfile->store('task_files')
+        ]);
+        $this->reset();
+        session()->flash('flash.banner', 'Task Updated Successfully');
+    }
+
+    public function deleteTask($id)
+    {
+        $task = Task::find($id);
+        Storage::delete('public/task_files/', $task->taskfile);
+        $task->delete();
+        session()->flash('flash.banner', 'Task Deleted Successfully');
     }
 
     public function refreshChildren()
     {
-       
+
     }
      public function render()
     {
         return view('livewire.tasks', [
-            'tasks' => Task::where('user_id', '=', Auth::user()->id)->paginate(5)
+            'tasks' => Task::where('user_id', '=', auth()->user()->id)
+            ->orWhere('assigned_to', '=', auth()->user()->id)
+            ->latest()
+            ->paginate(5),
+            'projects' => Project::all(),
+            'users' => User::all(),
         ]);
-
-        // $tasks = Task::where('user_id', '=', Auth::user()->id)->paginate(5);
-        // return view('livewire.tasks', [
-        //     'tasks' => $tasks
-        // ]);
     }
 }

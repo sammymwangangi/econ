@@ -87,7 +87,7 @@ class TasksController extends Controller
         // $task->taskfile = $fileNameToStore;
         $task->taskfile = $imageName;
         $task->project_id = $request->project_id;
-        $task->user_id = Auth::id();
+        $task->user_id = auth()->user()->id;
         $task->save();
 
         $user->notify(new TaskAdded);
@@ -168,7 +168,7 @@ class TasksController extends Controller
         $task->assigned_to = $request->assigned_to;
         $task->taskfile = $imageName;
         $task->project_id = $request->project_id;
-        $task->user_id = Auth::id();
+        $task->user_id = auth()->user()->id;
         $task->save();
 
         return redirect('taskmanager/tasks')

@@ -60,7 +60,7 @@ class ProjectController extends Controller
         $project->name = $request->name;
         $project->description = $request->description;
         $project->team_id = $request->team_id;
-        $project->user_id = Auth::id();
+        $project->user_id = auth()->user()->id;
         $project->save();
 
         return redirect()->route('projects.index')
@@ -118,7 +118,7 @@ class ProjectController extends Controller
         $project->name = $request->name;
         $project->description = $request->description;
         $project->team_id = $request->team_id;
-        $project->user_id = Auth::id();
+        $project->user_id = auth()->user()->id;
         $project->update();
 
         return redirect('taskmanager/projects')

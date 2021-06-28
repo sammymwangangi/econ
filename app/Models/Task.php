@@ -26,6 +26,11 @@ class Task extends Model
         'taskfile',
     ];
 
+    public function scopeOfStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
     public function project(){
         return $this->belongsTo(Project::class);
     }

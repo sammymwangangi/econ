@@ -6,8 +6,6 @@ use Livewire\Component;
 use App\Models\Project;
 use App\Models\Team;
 use Livewire\WithPagination;
-use Illuminate\Support\Str;
-use Auth;
 
 class Projects extends Component
 {
@@ -17,12 +15,12 @@ class Projects extends Component
     public $description;
     public $team_id;
     public $projectId = null;
-    
+
     public $showModalForm = false;
 
     public function refreshChildren()
     {
-       
+
     }
 
     public function showCreateProjectModal()
