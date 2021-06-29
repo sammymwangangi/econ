@@ -8,10 +8,13 @@ use Illuminate\Support\Collection;
 use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class TasksCalendar extends LivewireCalendar
 {
     public $isModalOpen = false;
+    public $newTaskFile;
 
     public $selectedTask = null;
 

@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.5",
+        "laraveldaily/laravel-charts": "^0.1.25",
         "livewire-ui/modal": "^0.1.7",
         "livewire/livewire": "^2.0",
         "mediconesystems/livewire-datatables": "^0.4.3",

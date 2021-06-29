@@ -141,8 +141,8 @@
                             <select
                                 wire:model.lazy="assigned_to"
                                 class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
+                                <option>Select User</option>
                                 @foreach($users as $user)
-                                    <option>Select User</option>
                                     <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
