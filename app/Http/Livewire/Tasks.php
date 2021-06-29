@@ -133,7 +133,6 @@ class Tasks extends Component
     {
         return view('livewire.tasks', [
             'tasks' => Task::where('user_id', '=', auth()->user()->id)
-            ->orWhere('assigned_to', '=', auth()->user()->id)
             ->latest()
             ->paginate(5),
             'projects' => Project::all(),

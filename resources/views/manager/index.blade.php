@@ -27,10 +27,8 @@
                         </div>
                     </div>
 
-                    <div class="flex-col bg-gray-100">
-                        <div class="flex flex-wrap items-center gap-2 px-4 py-2">
-                            <p class="text-sm">You don't have any updates in items assigned to you</p>
-                        </div>
+                    <div class="flex-col bg-gray-100 overflow-auto h-18">
+                        <livewire:task.assigned />
                     </div>
 
                     <div class="flex justify-between py-2 mb-2">
@@ -53,10 +51,8 @@
                         </div>
                     </div>
 
-                    <div class="flex-col bg-gray-100">
-                        <div class="flex flex-wrap items-center gap-2 px-4 py-2">
-                            <p class="text-sm">You don't have any updates in items created by you</p>
-                        </div>
+                    <div class="flex-col bg-gray-100 overflow-auto h-18">
+                        <livewire:task.created />
                     </div>
                 </div>
             </div>
