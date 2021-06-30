@@ -66,7 +66,7 @@ class Tasks extends Component
         $task->save();
         $this->saved = true;
         $this->reset();
-        session()->flash('flash.banner', 'Task created Successfully');
+        session()->flash('message', 'Task created Successfully');
     }
     public function showEditTaskModal($id)
     {
