@@ -49,12 +49,13 @@
         @livewireScripts
         @livewireCalendarScripts
         {{-- <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script> --}}
+        @stack('scripts')
         <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.ckeditor').ckeditor();
             });
-        </script>
+            </script>
 
         <script type="text/javascript">
             CKEDITOR.replace('body', {

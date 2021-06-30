@@ -21,6 +21,7 @@ class Tasks extends Component
     public $saved = false;
 
     public $showModalForm = false;
+    public $showDetailsModal = false;
 
     public function updated($field)
     {
@@ -32,6 +33,11 @@ class Tasks extends Component
     public function showCreateTaskModal()
     {
         $this->showModalForm = true;
+    }
+
+    public function showTaskDetailsModal()
+    {
+        $this->showDetailsModal = true;
     }
 
     public function updatedShowModalForm()
@@ -67,6 +73,7 @@ class Tasks extends Component
         $this->saved = true;
         $this->reset();
         session()->flash('message', 'Task created Successfully');
+        // $this->emit('taskCreated');
     }
     public function showEditTaskModal($id)
     {

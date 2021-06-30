@@ -103,4 +103,15 @@
             />
         </div>
     </div>
+    @push('scripts')
+    <script>
+        $("document").ready(function(){
+            setTimeout(function(){
+                $("div.message").remove();
+            }, 3000 ); // 3 secs
+
+        });
+    </script>
+    @endpush
 </x-task-layout>
+
