@@ -35,9 +35,28 @@ class Tasks extends Component
         $this->showModalForm = true;
     }
 
-    public function showTaskDetailsModal()
+    public function showTaskDetailsModal($id)
     {
+        // $this->reset();
+        // $this->taskId = $id;
+        // $this->loadDetailsCard();
+        // $task = Task::findOrFail($this->taskId);
+        // $this->name = $task->name;
+        // $this->description = $task->description;
+
+        $task = Task::findOrFail($id);
+        $this->taskId = $id;
+        $this->name = $task->name;
+        $this->description = $task->description;
+        
         $this->showDetailsModal = true;
+    }
+
+    public function loadDetailsCard()
+    {
+        $task = Task::findOrFail($this->taskId);
+        $this->name = $task->name;
+        $this->description = $task->description;
     }
 
     public function updatedShowModalForm()
