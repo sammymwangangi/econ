@@ -1,12 +1,14 @@
 <div class="flex-1 flex flex-col justify-between shadow rounded bg-white p-4 mb-4" style="height: 28rem;">
     <div>
-        @if(session()->has('message'))
-        <div class="bg-green-500 py-1 rounded-full">
-            <div class="text-white font-bold text-lg">
-                {{session('message')}}!
+        <div class="message">
+            @if(session()->has('message'))
+            <div class="bg-green-500 px-2 py-1 rounded-full">
+                <div class="text-white font-bold text-xs">
+                    {{session('message')}}!
+                </div>
             </div>
+            @endif
         </div>
-        @endif
         <div class="flex justify-between items-center py-4">
             <h1 class="font-bold text-gray-700">My Work</h1>
             {{-- <button wire:click="refreshChildren">Refresh</button> --}}
@@ -19,16 +21,14 @@
                     <h1 class="font-bold text-gray-500">Tasks</h1>
                 </div>
                 <div>
-
                     <svg wire:click="showCreateTaskModal" class="w-6 h-6 text-gray-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-
                 </div>
             </div>
             @foreach($tasks as $task)
                 <div class="flex-col hover:bg-red-50">
                     <div class="flex items-center gap-2 px-2 pt-2">
                         @include('layouts.status')
-                        <a wire:click="selectedTask">{{$task->name}}</a>
+                        <a wire:click="showTaskDetailsModal" class="cursor-pointer">{{$task->name}}</a>
                         @include('layouts.priority')
                         <button class="flex flex-shrink-0 items-center px-4 py-1 text-white rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 capitalize text-xs">
                             {{\Carbon\Carbon::parse($task->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($task->ends_at)->format('M d')}}
@@ -200,7 +200,7 @@
                         <div class="w-full m-2 p-2">
                           @if ($taskfile)
                            Task File:
-                          <img src="{{ asset('public/task_files/'. $taskfile ) }}">
+                          <img src="{{ asset('storage/'.$task->taskfile) }}">
                           @endif
                           @if ($taskfile)
                           File Preview:
@@ -225,6 +225,22 @@
                 <x-jet-button wire:click="updateTask">Update</x-jet-button>
             @else
                 <x-jet-button wire:click="storeTask">Store</x-jet-button>
+            @endif
+        </x-slot>
+    </x-jet-dialog-modal>
+
+    <x-jet-dialog-modal wire:model="showDetailsModal">
+        <x-slot name="title">Task Details</x-slot>
+        <x-slot name="content">
+            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
+                Details
+            </div>
+        </x-slot>
+        <x-slot name="footer">
+            @if ($taskId)
+                <x-jet-button>View full details</x-jet-button>
+            @else
+                <x-jet-button>Close</x-jet-button>
             @endif
         </x-slot>
     </x-jet-dialog-modal>
