@@ -1,5 +1,12 @@
 <div class="flex-1 flex flex-col justify-between shadow rounded bg-white p-4 mb-4" style="height: 28rem;">
     <div>
+        @if(session()->has('message'))
+        <div class="bg-green-500 py-1 rounded-full">
+            <div class="text-white font-bold text-lg">
+                {{session('message')}}!
+            </div>
+        </div>
+        @endif
         <div class="flex justify-between items-center py-4">
             <h1 class="font-bold text-gray-700">My Work</h1>
             {{-- <button wire:click="refreshChildren">Refresh</button> --}}
