@@ -13,6 +13,7 @@ use App\Models\Project;
 use App\Models\Task;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 // use App\Http\Livewire\Projects;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 
 Route::get('/', function () {
@@ -30,7 +31,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     ->setColors(['#FFC107', '#303F9F'])
     ->setMarkers(['#FF5722', '#E040FB'], 7, 10);
 
-    return view('dashboard', compact('chart'));
+    $chart_options = [
+        'chart_title' => 'Tasks by dates',
+        'chart_type' => 'line',
+        'report_type' => 'group_by_date',
+        'model' => 'App\Models\Task',
+        'group_by_field' => 'created_at',
+        'group_by_period' => 'day',
+        'continuous_time' => true, // show continuous timeline including dates without data
+    ];
+    $chart1 = new LaravelChart($chart_options);
+
+    return view('dashboard', compact('chart', 'chart1'));
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
