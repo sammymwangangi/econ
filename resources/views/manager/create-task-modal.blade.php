@@ -135,34 +135,34 @@
                 </div>
             </div>
 
-            <div
-                        class="sm:col-span-6"
-                        x-data="{ isUploading: false, progress: 0 }"
-                        x-on:livewire-upload-start="isUploading = true"
-                        x-on:livewire-upload-finish="isUploading = false"
-                        x-on:livewire-upload-error="isUploading = false"
-                        x-on:livewire-upload-progress="progress = $event.detail.progress"
-                    >
-                        <div class="w-full m-2 p-2">
-                          @if ($taskfile)
-                           Task File:
-                          <img src="{{ asset('public/task_files/'. $taskfile ) }}">
-                          @endif
-                          @if ($taskfile)
-                          File Preview:
-                          <img src="{{ $taskfile->temporaryUrl() }}">
-                          @endif
-                        </div>
-                        <label for="title" class="block text-sm font-medium text-gray-700"> Task File </label>
-                        <div class="mt-1">
-                          <input type="file" id="taskfile" wire:model="taskfile" name="taskfile" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
-                        </div>
-                        <!-- Progress Bar -->
-                        <div x-show="isUploading">
-                            <progress max="100" x-bind:value="progress"></progress>
-                        </div>
-                        @error('taskfile') <span class="error">{{ $message }}</span> @enderror
-                    </div>
+            {{-- <div
+                class="sm:col-span-6"
+                x-data="{ isUploading: false, progress: 0 }"
+                x-on:livewire-upload-start="isUploading = true"
+                x-on:livewire-upload-finish="isUploading = false"
+                x-on:livewire-upload-error="isUploading = false"
+                x-on:livewire-upload-progress="progress = $event.detail.progress"
+            >
+                <div class="w-full m-2 p-2">
+                    @if ($taskfile)
+                    Task File:
+                    <img src="{{ asset('public/task_files/'. $taskfile ) }}">
+                    @endif
+                    @if ($taskfile)
+                    File Preview:
+                    <img src="{{ $taskfile->temporaryUrl() }}">
+                    @endif
+                </div>
+                <label for="title" class="block text-sm font-medium text-gray-700"> Task File </label>
+                <div class="mt-1">
+                    <input type="file" id="taskfile" wire:model="taskfile" name="taskfile" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
+                </div>
+                <!-- Progress Bar -->
+                <div x-show="isUploading">
+                    <progress max="100" x-bind:value="progress"></progress>
+                </div>
+                @error('taskfile') <span class="error">{{ $message }}</span> @enderror
+            </div> --}}
         </div>
 
         <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
