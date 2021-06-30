@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="#" class="text-gray-500 font-semibold place-content-end">View Projects Board</a>
+                <a href="{{route('projects.index')}}" class="text-gray-500 font-semibold place-content-end">View Projects Board</a>
             </div>
         </div>
     </div>
