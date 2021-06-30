@@ -84,8 +84,9 @@
             </div>
         </div>
         <div class="px-8 py-1 bg-white text-base">
-            {{-- <img src="{{url('/task_files/'.$task->taskfile)}}" width="100" height="100" alt="task-file"> --}}
-            {{$task->taskfile}}
+            {{-- <img src="/storage/storage/task_files/{{$task->taskfile_url}}" width="100" height="100" alt="task-file"> --}}
+            <a href="{{url('storage/'.$task->taskfile)}}" download>{{$task->taskfile}}</a>
+
         </div>
         <div class="text-gray-500 font-bold">
             <h1 id="comments" class="py-4 text-xl">Comments</h1>

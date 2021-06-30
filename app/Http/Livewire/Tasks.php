@@ -22,12 +22,6 @@ class Tasks extends Component
 
     public $showModalForm = false;
 
-    // public function mount()
-    // {
-    //     $this->name = auth()->user()->name;
-    //     $this->description = auth()->user()->description;
-    // }
-
     public function updated($field)
     {
         if ($field !== 'saved') {
@@ -57,8 +51,7 @@ class Tasks extends Component
           'taskfile' => 'image|max:1024', // 1MB Max
         ]);
 
-        // $image_name = $this->taskfile->getClientOriginalName();
-        // $this->taskfile->storeAs('public/task_files/', $image_name);
+        $image_name = $this->taskfile->store('task_files', 'public');
         $task =new Task();
         $task->user_id = auth()->user()->id;
         $task->name = $this->name;
@@ -69,7 +62,7 @@ class Tasks extends Component
         $task->priority = $this->priority;
         $task->assigned_to = $this->assigned_to;
         $task->project_id = $this->project_id;
-        $task->taskfile = $this->taskfile->store('task_files');
+        $task->taskfile = $image_name;
         $task->save();
         $this->saved = true;
         $this->reset();
@@ -111,7 +104,7 @@ class Tasks extends Component
              'priority'  => $this->priority,
              'assigned_to'  => $this->assigned_to,
              'project_id'  => $this->project_id,
-             'taskfile' => $this->taskfile->store('task_files')
+             'taskfile' => $this->taskfile->store('task_files', 'public')
         ]);
         $this->reset();
         session()->flash('flash.banner', 'Task Updated Successfully');
