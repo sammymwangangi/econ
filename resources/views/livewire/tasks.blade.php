@@ -241,7 +241,9 @@
         </x-slot>
         <x-slot name="footer">
             @if ($taskId)
+            <a href="{{route('tasks.show', $task->id)}}">
                 <x-jet-button>View full details</x-jet-button>
+            </a>
             @else
                 <x-jet-button>Close</x-jet-button>
             @endif
