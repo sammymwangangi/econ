@@ -21,7 +21,7 @@ class Tasks extends Component
     public $saved = false;
 
     public $showModalForm = false;
-    public $showDetailsModal = false;
+    public $detailsModal = false;
 
     public function updated($field)
     {
@@ -33,30 +33,6 @@ class Tasks extends Component
     public function showCreateTaskModal()
     {
         $this->showModalForm = true;
-    }
-
-    public function showTaskDetailsModal($id)
-    {
-        // $this->reset();
-        // $this->taskId = $id;
-        // $this->loadDetailsCard();
-        // $task = Task::findOrFail($this->taskId);
-        // $this->name = $task->name;
-        // $this->description = $task->description;
-
-        $task = Task::findOrFail($id);
-        $this->taskId = $id;
-        $this->name = $task->name;
-        $this->description = $task->description;
-        
-        $this->showDetailsModal = true;
-    }
-
-    public function loadDetailsCard()
-    {
-        $task = Task::findOrFail($this->taskId);
-        $this->name = $task->name;
-        $this->description = $task->description;
     }
 
     public function updatedShowModalForm()
@@ -108,6 +84,22 @@ class Tasks extends Component
         $this->name = $task->name;
         $this->description = $task->description;
         $this->newTaskFile = $task->taskfile;
+    }
+
+    public function show($id)
+    {
+        // $this->reset();
+        $this->detailsModal = true;
+        $this->taskId = $id;
+        $this->loadDetails();
+    }
+
+    public function loadDetails()
+    {
+        $task = Task::findOrFail($this->taskId)->first();
+        // $task = Task::where('id', $taskId)->first();
+        $this->name = $task->name;
+        $this->description = $task->description;
     }
 
     public function updateTask()
