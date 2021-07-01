@@ -135,7 +135,7 @@
                 </div>
             </div>
 
-            {{-- <div
+            <div
                 class="sm:col-span-6"
                 x-data="{ isUploading: false, progress: 0 }"
                 x-on:livewire-upload-start="isUploading = true"
@@ -162,7 +162,7 @@
                     <progress max="100" x-bind:value="progress"></progress>
                 </div>
                 @error('taskfile') <span class="error">{{ $message }}</span> @enderror
-            </div> --}}
+            </div>
         </div>
 
         <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">

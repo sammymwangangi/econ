@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Storage;
 class TasksCalendar extends LivewireCalendar
 {
     public $isModalOpen = false;
-    public $newTaskFile;
+    public $name,$description,$project_id,$start_at,$end_at,$status,$assigned_to,$priority,$taskfile;
 
     public $selectedTask = null;
 
     public $newTask;
+
+    use WithFileUploads;
 
     public function events(): Collection
     {
@@ -56,7 +58,34 @@ class TasksCalendar extends LivewireCalendar
 
     public function saveTask()
     {
-        Task::create($this->newTask);
+        // Task::create($this->newTask);
+
+        $this->validate([
+          'name' =>'required',
+          'description'  => 'required',
+          'start_at'  => 'required',
+          'end_at'  => 'required',
+          'status'  => 'required',
+          'priority'  => 'required',
+          'taskfile' => 'image|max:1024', // 1MB Max
+        ]);
+
+        $image_name = $this->taskfile->store('task_files', 'public');
+        $task =new Task();
+        $task->user_id = auth()->user()->id;
+        $task->name = $this->name;
+        $task->description = $this->description;
+        $task->start_at = $this->start_at;
+        $task->end_at = $this->end_at;
+        $task->status = $this->status;
+        $task->priority = $this->priority;
+        $task->assigned_to = $this->assigned_to;
+        $task->project_id = $this->project_id;
+        $task->taskfile = $image_name;
+        $task->save();
+        $this->saved = true;
+        $this->reset();
+        session()->flash('message', 'Task created Successfully');
 
         $this->isModalOpen = false;
     }
@@ -78,6 +107,7 @@ class TasksCalendar extends LivewireCalendar
             'status' => '',
             'assigned_to' => '',
             'priority' => '',
+            'taskfile' => '',
         ];
     }
 
