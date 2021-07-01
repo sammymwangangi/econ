@@ -28,7 +28,7 @@
                 <div class="flex-col hover:bg-red-50">
                     <div class="flex items-center gap-2 px-2 pt-2">
                         @include('layouts.status')
-                        <a wire:click="showTaskDetailsModal({{ $task->id }})" class="cursor-pointer">{{$task->name}}</a>
+                        <a href="{{route('tasks.show', $task->id)}}">{{$task->name}}</a>
                         @include('layouts.priority')
                         <button class="flex flex-shrink-0 items-center px-4 py-1 text-white rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 capitalize text-xs">
                             {{\Carbon\Carbon::parse($task->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($task->ends_at)->format('M d')}}
@@ -229,7 +229,7 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-    <x-jet-dialog-modal wire:model="showDetailsModal">
+    <x-jet-dialog-modal wire:model="detailsModal">
         <x-slot name="title">Task Details</x-slot>
         <x-slot name="content">
             <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
