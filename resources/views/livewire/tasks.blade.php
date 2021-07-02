@@ -47,7 +47,7 @@
     <x-jet-dialog-modal wire:model="showModalForm">
         <x-slot name="title">Create Task</x-slot>
         <x-slot name="content">
-            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
+            <div class="space-y-8 divide-y divide-gray-200 w-full mt-10">
                 <form wire:submit.prevent="save" enctype="multipart/form-data">
                     <div class="sm:col-span-6">
                         <label for="name" class="block text-sm font-medium text-gray-700"> Task Name </label>
@@ -60,8 +60,7 @@
                     <div class="sm:col-span-6 pt-5">
                         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                         <div class="mt-1">
-                            <textarea rows="3" wire:model.lazy="description"
-                                class="border rounded p-2 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"></textarea>
+                            <textarea id="description" rows="3" wire:model.lazy="description" class="shadow-sm focus:ring-indigo-500 appearance-none border py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
                         </div>
                         @error('description') <span class="error">{{ $message }}</span> @enderror
                     </div>
@@ -72,13 +71,13 @@
                         </label>
 
                         <select class="form-select px-4 py-3 w-full rounded" wire:model="project_id" name="project_id">
+                            <option>Select Project</option>
                             @foreach ($projects as $project)
-                                <option>Select Project</option>
                                 <option value="{{ $project->id }}">{{ $project->name }}</option>
                             @endforeach
                         </select>
                         <p class="mt-2 text-sm text-gray-500">
-                            Select the projectyour task is associated with.
+                            Select the project your task is associated with.
                         </p>
 
                         @error('project_id')
@@ -176,8 +175,8 @@
                             <select
                                 wire:model.lazy="assigned_to"
                                 class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
+                                <option>Select User</option>
                                 @foreach($users as $user)
-                                    <option>Select User</option>
                                     <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>

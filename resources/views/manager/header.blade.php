@@ -31,10 +31,10 @@
 
     {{-- Unscheduled Tasks --}}
     <div class="bg-orange-100 p-2">
-        <h1 class="text-lg font-medium">
+        {{-- <h1 class="text-lg font-medium">
             Unscheduled Tasks
-        </h1>
-        <div class="flex py-2">
+        </h1> --}}
+        {{-- <div class="flex py-2">
             @foreach($unscheduledEvents as $task)
                 <div
                     class="shadow p-2 border rounded bg-white mr-2"
@@ -59,7 +59,7 @@
                     No tasks found
                 </p>
             @endif
-        </div>
+        </div> --}}
     </div>
 
     {{-- Modals --}}

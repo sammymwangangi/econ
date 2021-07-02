@@ -11,36 +11,36 @@
     <x-jet-dialog-modal wire:model="showModalForm">
         <x-slot name="title">Create Project</x-slot>
         <x-slot name="content">
-            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
+            <div class="space-y-8 divide-y divide-gray-200 w-full mt-10">
                 <form wire:submit.prevent="save">
                 <div class="sm:col-span-6">
-                    <label for="name" class="block text-sm font-medium text-gray-700"> Project Name </label>
+                    <label for="name" class="block text-gray-700 dark:text-white text-sm font-bold mb-2"> Project Name </label>
                     <div class="mt-1">
                     <input type="text" id="name" wire:model.lazy="name" name="name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
                     </div>
                     @error('name') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="sm:col-span-6 pt-5">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <label for="description" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">Description</label>
                     <div class="mt-1">
-                    <textarea id="description" rows="3" wire:model.lazy="description" class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+                    <textarea id="description" rows="3" wire:model.lazy="description" class="shadow-sm focus:ring-indigo-500 appearance-none border py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
                     </div>
                     @error('description') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="flex flex-wrap mb-6">
                     <label for="team" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
-                    {{ __('Team') }}:
+                    {{ __('Department') }}:
                     </label>
 
                     <select class="form-select px-4 py-3 w-full rounded" wire:model="team_id" name="team_id">
+                        <option>Select Department</option>
                     @foreach($teams as $team)
-                        <option>Select Team</option>
                         <option value="{{$team->id}}">{{$team->name}}</option>
                     @endforeach
                     </select>
                     <p class="mt-2 text-sm text-gray-500">
-                    Select the team/department your project is associated with.
+                    Select the department your project is associated with.
                     </p>
 
                     @error('team_id')

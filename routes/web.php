@@ -33,7 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     $chart_options = [
         'chart_title' => 'Tasks by dates',
-        'chart_type' => 'line',
+        'chart_type' => 'bar',
         'report_type' => 'group_by_date',
         'model' => 'App\Models\Task',
         'group_by_field' => 'created_at',

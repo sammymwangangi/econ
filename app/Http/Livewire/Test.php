@@ -15,7 +15,7 @@ class TasksCalendar extends LivewireCalendar
 {
     use WithFileUploads;
 
-    public $name,$description,$project_id,$user_id,$start_at,$end_at,$status,$assigned_to,$priority,$taskfile;
+    public $name,$description,$project_id,$start_at,$end_at,$status,$assigned_to,$priority,$taskfile;
     public $newTaskFile;
 
     public $selectedTask = null;
@@ -49,31 +49,20 @@ class TasksCalendar extends LivewireCalendar
     public function onDayClick($year, $month, $day)
     {
         $this->isModalOpen = true;
-        $this->validate([
-          'name' =>'required',
-          'description'  => 'required',
-          'start_at'  => 'required',
-          'end_at'  => 'required',
-          'status'  => 'required',
-          'priority'  => 'required',
-          'taskfile' => 'image|max:1024', // 1MB Max
-        ]);
 
-
-        $image_name = $this->taskfile->store('task_files', 'public');
-        $task =new Task();
-        $task->user_id = auth()->user()->id;
-        $task->name = $this->name;
-        $task->description = $this->description;
-        $task->start_at = $this->start_at;
-        $task->end_at = $this->end_at;
-        $task->status = $this->status;
-        $task->priority = $this->priority;
-        $task->assigned_to = $this->assigned_to;
-        $task->project_id = $this->project_id;
-        $task->taskfile = $image_name;
-        $task->save();
         $this->resetNewTask();
+        $image_name = $this->taskfile->store('task_files', 'public');
+
+        $this->newTask['start_at'] = Carbon::today()->setDate($year, $month, $day)->format('Y-m-d');
+        $this->newTask['end_at'] = Carbon::today()->setDate($year, $month, $day)->format('Y-m-d');
+        $this->newTask['name'] = $this->name;
+        $this->newTask['user_id'] = auth()->user()->id;
+        $this->newTask['description'] = $this->description;
+        $this->newTask['status'] = $this->status;
+        $this->newTask['priority'] = $this->priority;
+        $this->newTask['assigned_to'] = $this->assigned_to;
+        $this->newTask['project_id'] = $this->project_id;
+        $this->newTask['taskfile'] = $image_name;
     }
 
     public function saveTask()
