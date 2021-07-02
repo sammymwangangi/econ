@@ -73,7 +73,6 @@
                         <div class="flex items-center gap-2 px-4 py-1">
                             <svg class="w-4 h-4 text-blue-400 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
                             <div class="group-hover:text-gray-600">
-                                {{-- <button wire:click="show({{ $project->id }})" class="font-semibold">{{$project->name}}</button> --}}
                                 <a href="{{route('projects.show', $project->id)}}" class="font-semibold">{{$project->name}}</a>
                             </div>
                         </div>
@@ -103,15 +102,5 @@
             />
         </div>
     </div>
-    @push('scripts')
-    <script>
-        $("document").ready(function(){
-            setTimeout(function(){
-                $("div.message").remove();
-            }, 3000 ); // 3 secs
-
-        });
-    </script>
-    @endpush
 </x-task-layout>
 
