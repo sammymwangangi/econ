@@ -15,153 +15,157 @@
             New Task
         </h1>
 
-        <div class="grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6 mt-4">
-            <div class="sm:col-span-6">
-                <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
-                    Project Name
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <select
-                        wire:model.lazy="newTask.project_id"
-                        class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
-                        <option>Select Project</option>
-                        @foreach($projects as $project)
-                            <option value="{{$project->id}}">{{$project->name}}</option>
-                        @endforeach
-                    </select>
+        <div class="mt-4">
+            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
+            <form wire:submit.prevent="newTask" enctype="multipart/form-data">
+                <div class="">
+                    <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
+                        Project Name
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <select
+                            wire:model.lazy="newTask.project_id"
+                            class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
+                            <option>Select Project</option>
+                            @foreach($projects as $project)
+                                <option value="{{$project->id}}">{{$project->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-6">
-                <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
-                    Name
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <input
-                        wire:model.lazy="newTask.name"
-                        class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
-                        placeholder="What's the task about?"
-                    />
+                <div class="">
+                    <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
+                        Name
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <input
+                            wire:model.lazy="newTask.name"
+                            class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
+                            placeholder="What's the task about?"
+                        />
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-6">
-                <label for="description" class="block text-sm font-medium leading-5 text-gray-700">
-                    Description
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <textarea
-                        rows="3"
-                        wire:model.lazy="newTask.description"
-                        placeholder="Details regarding the task"
-                        class="border rounded p-2 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                    ></textarea>
+                <div class="">
+                    <label for="description" class="block text-sm font-medium leading-5 text-gray-700">
+                        Description
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <textarea
+                            rows="3"
+                            wire:model.lazy="newTask.description"
+                            placeholder="Details regarding the task"
+                            class="border rounded p-2 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                        ></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-3">
-                <label for="start_at" class="block text-sm font-medium leading-5 text-gray-700">
-                    Start At
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <input
-                        type="date"
-                        wire:model.lazy="newTask.start_at"
-                        class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
-                        placeholder="What's the task about?"
-                    />
+                <div class="">
+                    <label for="start_at" class="block text-sm font-medium leading-5 text-gray-700">
+                        Start At
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <input
+                            type="date"
+                            wire:model.lazy="newTask.start_at"
+                            class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
+                            placeholder="What's the task about?"
+                        />
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-3">
-                <label for="end_at" class="block text-sm font-medium leading-5 text-gray-700">
-                    Due Date
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <input
-                        type="date"
-                        wire:model.lazy="newTask.end_at"
-                        class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
-                    />
+                <div class="">
+                    <label for="end_at" class="block text-sm font-medium leading-5 text-gray-700">
+                        Due Date
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <input
+                            type="date"
+                            wire:model.lazy="newTask.end_at"
+                            class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
+                        />
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-3">
-                <label for="priority" class="block text-sm font-medium leading-5 text-gray-700">
-                    Priority
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <select
-                        wire:model.lazy="newTask.priority"
-                        class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
-                        <option>Select Priority</option>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                        <option value="None">None</option>
-                    </select>
+                <div class="">
+                    <label for="priority" class="block text-sm font-medium leading-5 text-gray-700">
+                        Priority
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <select
+                            wire:model.lazy="newTask.priority"
+                            class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
+                            <option>Select Priority</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                            <option value="None">None</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-3">
-                <label for="status" class="block text-sm font-medium leading-5 text-gray-700">
-                    Status
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <select
-                        wire:model.lazy="newTask.status"
-                        class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
-                        <option>Select Status</option>
-                        <option value="No Progress">No Progress</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Complete">Complete</option>
-                    </select>
+                <div class="">
+                    <label for="status" class="block text-sm font-medium leading-5 text-gray-700">
+                        Status
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <select
+                            wire:model.lazy="newTask.status"
+                            class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
+                            <option>Select Status</option>
+                            <option value="No Progress">No Progress</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Complete">Complete</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="sm:col-span-6">
-                <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
-                    Assign to user
-                </label>
-                <div class="mt-1 rounded-md shadow-sm">
-                    <select
-                        wire:model.lazy="newTask.assigned_to"
-                        class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
-                        <option>Assign to User</option>
-                        @foreach($users as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                        @endforeach
-                    </select>
+                <div class="">
+                    <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
+                        Assign to user
+                    </label>
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <select
+                            wire:model.lazy="newTask.assigned_to"
+                            class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
+                            <option>Assign to User</option>
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div
-                class="sm:col-span-6"
-                x-data="{ isUploading: false, progress: 0 }"
-                x-on:livewire-upload-start="isUploading = true"
-                x-on:livewire-upload-finish="isUploading = false"
-                x-on:livewire-upload-error="isUploading = false"
-                x-on:livewire-upload-progress="progress = $event.detail.progress"
-            >
-                <div class="w-full m-2 p-2">
-                    @if ($taskfile)
-                    Task File:
-                    <img src="{{ asset('public/task_files/'. $taskfile ) }}">
-                    @endif
-                    @if ($taskfile)
-                    File Preview:
-                    <img src="{{ $taskfile->temporaryUrl() }}">
-                    @endif
+                <div
+                    class="sm:col-span-6"
+                    x-data="{ isUploading: false, progress: 0 }"
+                    x-on:livewire-upload-start="isUploading = true"
+                    x-on:livewire-upload-finish="isUploading = false"
+                    x-on:livewire-upload-error="isUploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress"
+                >
+                    <div class="w-full m-2 p-2">
+                        @if ($taskfile)
+                        Task File:
+                        <img src="{{ asset('public/task_files/'. $taskfile ) }}">
+                        @endif
+                        @if ($taskfile)
+                        File Preview:
+                        <img src="{{ $taskfile->temporaryUrl() }}">
+                        @endif
+                    </div>
+                    <label for="title" class="block text-sm font-medium text-gray-700"> Task File </label>
+                    <div class="mt-1">
+                        <input type="file" id="taskfile" wire:model="taskfile" name="taskfile" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
+                    </div>
+                    <!-- Progress Bar -->
+                    <div x-show="isUploading">
+                        <progress max="100" x-bind:value="progress"></progress>
+                    </div>
+                    @error('taskfile') <span class="error">{{ $message }}</span> @enderror
                 </div>
-                <label for="title" class="block text-sm font-medium text-gray-700"> Task File </label>
-                <div class="mt-1">
-                    <input type="file" id="taskfile" wire:model="taskfile" name="taskfile" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
-                </div>
-                <!-- Progress Bar -->
-                <div x-show="isUploading">
-                    <progress max="100" x-bind:value="progress"></progress>
-                </div>
-                @error('taskfile') <span class="error">{{ $message }}</span> @enderror
+            </form>
             </div>
         </div>
 
