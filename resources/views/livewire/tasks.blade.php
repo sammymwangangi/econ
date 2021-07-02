@@ -11,7 +11,6 @@
         </div>
         <div class="flex justify-between items-center py-4">
             <h1 class="font-bold text-gray-700">My Work</h1>
-            {{-- <button wire:click="refreshChildren">Refresh</button> --}}
             <svg wire:click="refreshChildren" class="w-6 h-6 cursor-pointer text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
         </div>
         <div class="flex flex-col divide-y py-2">
@@ -47,7 +46,7 @@
     <x-jet-dialog-modal wire:model="showModalForm">
         <x-slot name="title">Create Task</x-slot>
         <x-slot name="content">
-            <div class="space-y-8 divide-y divide-gray-200 w-full mt-10">
+            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
                 <form wire:submit.prevent="save" enctype="multipart/form-data">
                     <div class="sm:col-span-6">
                         <label for="name" class="block text-sm font-medium text-gray-700"> Task Name </label>
@@ -64,7 +63,7 @@
                         </div>
                         @error('description') <span class="error">{{ $message }}</span> @enderror
                     </div>
-
+                    
                     <div class="flex flex-wrap mb-6">
                         <label for="project" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
                             {{ __('Project') }}:
