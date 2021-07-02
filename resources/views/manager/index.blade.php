@@ -69,6 +69,7 @@
                 <hr>
                 <div class="flex flex-col divide-y py-2">
                     @foreach($projects as $project)
+                    
                     <div class="flex-col group hover:bg-red-50">
                         <div class="flex items-center gap-2 px-4 py-1">
                             <svg class="w-4 h-4 text-blue-400 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
@@ -83,6 +84,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     @endforeach
                 </div>
             </div>

@@ -9,6 +9,8 @@ use App\Models\User;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Notifications\TaskAdded;
 
 class Tasks extends Component
 {
@@ -40,7 +42,7 @@ class Tasks extends Component
         $this->reset();
     }
 
-    public function storeTask()
+    public function storeTask(Request $request)
     {
         $this->validate([
           'name' =>'required',
@@ -66,8 +68,9 @@ class Tasks extends Component
         $task->taskfile = $image_name;
         $task->save();
         $this->saved = true;
+        request()->user()->notify(new TaskAdded($task));
         $this->reset();
-        session()->flash('message', 'Task created Successfully');
+        flash('message', 'Task created Successfully');
         // $this->emit('taskCreated');
     }
     public function showEditTaskModal($id)
@@ -125,7 +128,7 @@ class Tasks extends Component
              'taskfile' => $this->taskfile->store('task_files', 'public')
         ]);
         $this->reset();
-        session()->flash('flash.banner', 'Task Updated Successfully');
+        flash('flash.banner', 'Task Updated Successfully');
     }
 
     public function deleteTask($id)
@@ -133,7 +136,7 @@ class Tasks extends Component
         $task = Task::find($id);
         Storage::delete('public/task_files/', $task->taskfile);
         $task->delete();
-        session()->flash('flash.banner', 'Task Deleted Successfully');
+        flash('message', 'Task Deleted Successfully');
     }
 
     public function refreshChildren()

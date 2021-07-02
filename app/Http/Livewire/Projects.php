@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Project;
 use App\Models\Team;
+use Illuminate\Http\Request;
+use App\Notifications\ProjectCreated;
 use Livewire\WithPagination;
 
 class Projects extends Component
@@ -33,7 +35,7 @@ class Projects extends Component
         $this->reset();
     }
 
-    public function storeProject()
+    public function storeProject(Request $request)
     {
         $this->validate([
           'name' =>'required',
@@ -46,8 +48,9 @@ class Projects extends Component
         $project->description = $this->description;
         $project->team_id = $this->team_id;
         $project->save();
+        // request()->user()->notify(new ProjectCreated($project));
         $this->reset();
-        session()->flash('flash.banner', 'Project created Successfully');
+        flash('message', 'Project created Successfully');
     }
     public function showEditProjectModal($id)
     {
@@ -76,14 +79,14 @@ class Projects extends Component
              'description'  => $this->description
         ]);
         $this->reset();
-        session()->flash('flash.banner', 'Project Updated Successfully');
+        flash('message', 'Project Updated Successfully');
     }
 
     public function deleteProject($id)
     {
         $project = Project::find($id);
         $project->delete();
-        session()->flash('flash.banner', 'Project Deleted Successfully');
+        flash('message', 'Project Deleted Successfully');
     }
 
     public function render()
