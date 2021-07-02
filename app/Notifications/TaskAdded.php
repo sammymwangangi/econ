@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class TaskAdded extends Notification
 {
     use Queueable;
+    protected $task;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($task)
     {
-        //
+        $this->task = $task;
     }
 
     /**
@@ -29,7 +30,7 @@ class TaskAdded extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -40,9 +41,12 @@ class TaskAdded extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/taskmanager/tasks/'.$this->task->id);
+        $name = $this->task->name;
         return (new MailMessage)
-                    ->line('A Task has been assigned to you.')
-                    ->action('View the task', url('/taskmanager/tasks'))
+                    ->line("**".$name."**")
+                    ->line('The above task has been created successfully.')
+                    ->action('View Task', $url)
                     ->line('Thank you for using our application!');
     }
 
@@ -55,7 +59,7 @@ class TaskAdded extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'task' => $this->task
         ];
     }
 }

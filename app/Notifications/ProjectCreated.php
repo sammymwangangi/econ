@@ -7,18 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class TaskCreated extends Notification
+class ProjectCreated extends Notification
 {
     use Queueable;
+    protected $project;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($project)
     {
-        //
+        $this->project = $project;
     }
 
     /**
@@ -40,9 +41,12 @@ class TaskCreated extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/taskmanager/projects/'.$this->project->id);
+        $name = $this->project->name;
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line("**".$name."**")
+                    ->line('The above project has been created **Successfully**.')
+                    ->action('View Project', $url)
                     ->line('Thank you for using our application!');
     }
 
@@ -55,7 +59,7 @@ class TaskCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'project' => $this->project
         ];
     }
 }
