@@ -50,7 +50,7 @@ class Projects extends Component
         $project->save();
         // request()->user()->notify(new ProjectCreated($project));
         $this->reset();
-        flash('message', 'Project created Successfully');
+        session()->flash('message', 'Project created Successfully');
     }
     public function showEditProjectModal($id)
     {

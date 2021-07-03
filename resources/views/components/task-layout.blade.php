@@ -47,6 +47,9 @@
         @stack('modals')
         @include('sweetalert::alert')
         @livewireScripts
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <x-livewire-alert::scripts />
         @livewireCalendarScripts
         {{-- <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script> --}}
         @stack('scripts')
