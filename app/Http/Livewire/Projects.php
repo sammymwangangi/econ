@@ -50,7 +50,18 @@ class Projects extends Component
         $project->save();
         // request()->user()->notify(new ProjectCreated($project));
         $this->reset();
-        flash('message', 'Project created Successfully');
+        // session()->flash('message', 'Project created Successfully');
+        $this->alert('success', 'Project created Successfully!', [
+            'position' =>  'top-end', 
+            'timer' =>  3000,  
+            'toast' =>  true, 
+            
+            'text' =>  '', 
+            'confirmButtonText' =>  '', 
+            'cancelButtonText' =>  '', 
+            'showCancelButton' =>  false, 
+            'showConfirmButton' =>  false, 
+        ]);
     }
     public function showEditProjectModal($id)
     {
@@ -79,14 +90,36 @@ class Projects extends Component
              'description'  => $this->description
         ]);
         $this->reset();
-        flash('message', 'Project Updated Successfully');
+        // flash('message', 'Project Updated Successfully');
+        $this->alert('success', 'Project Updated Successfully!', [
+            'position' =>  'top-end', 
+            'timer' =>  3000,  
+            'toast' =>  true, 
+            
+            'text' =>  '', 
+            'confirmButtonText' =>  '', 
+            'cancelButtonText' =>  '', 
+            'showCancelButton' =>  false, 
+            'showConfirmButton' =>  false, 
+        ]);
     }
 
     public function deleteProject($id)
     {
         $project = Project::find($id);
         $project->delete();
-        flash('message', 'Project Deleted Successfully');
+        // flash('message', 'Project Deleted Successfully');
+        $this->alert('success', 'Project Deleted Successfully!', [
+            'position' =>  'top-end', 
+            'timer' =>  3000,  
+            'toast' =>  true, 
+            
+            'text' =>  '', 
+            'confirmButtonText' =>  '', 
+            'cancelButtonText' =>  '', 
+            'showCancelButton' =>  false, 
+            'showConfirmButton' =>  false, 
+        ]);
     }
 
     public function render()
