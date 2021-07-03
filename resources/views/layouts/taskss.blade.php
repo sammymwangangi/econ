@@ -19,6 +19,9 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -29,7 +32,7 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto py-1 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
@@ -42,7 +45,46 @@
         </div>
 
         @stack('modals')
-
+        @include('sweetalert::alert')
         @livewireScripts
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <x-livewire-alert::scripts />
+        @livewireCalendarScripts
+        {{-- <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script> --}}
+        @stack('scripts')
+        <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.ckeditor').ckeditor();
+            });
+            </script>
+
+        <script type="text/javascript">
+            CKEDITOR.replace('body', {
+                filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form',
+                config.toolbarCanCollapse = true;
+            });
+        </script>
+
+        <script type="text/javascript">
+            CKEDITOR.replace('description', {
+                filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
+
+        <script>
+            tippy('a', {
+                content:(reference)=>reference.getAttribute('data-title'),
+                onMount(instance) {
+                    instance.popperInstance.setOptions({
+                    placement :instance.reference.getAttribute('data-placement')
+                    });
+                }
+            });
+        </script>
+
     </body>
 </html>

@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="#" class="text-gray-500 font-semibold place-content-end">Notifications</a>
+                <a href="{{url('/taskmanager/notifications')}}" class="text-gray-500 font-semibold place-content-end">Notifications</a>
             </div>
         </div>
         <div class="flex-1 flex flex-col justify-between shadow rounded bg-white p-4 mb-4" style="height: 28rem;">
