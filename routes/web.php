@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Livewire\Notifications;
 use App\Models\Project;
 use App\Models\Task;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('comments', CommentsController::class);
     Route::resource('taskmanager/projects', ProjectController::class);
     Route::resource('taskmanager/tasks', TasksController::class);
+    Route::get('taskmanager/notifications', Notifications::class);
   });
 
 Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index')->middleware('auth');
