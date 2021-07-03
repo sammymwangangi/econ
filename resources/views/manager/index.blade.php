@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-col bg-gray-100 overflow-auto h-18">
+                    <div class="flex-col bg-gray-100 overflow-auto h-12">
                         <livewire:task.assigned />
                     </div>
 
@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <div class="flex-col bg-gray-100 overflow-auto h-18">
+                    <div class="flex-col bg-gray-100 overflow-auto h-12">
                         <livewire:task.created />
                     </div>
                 </div>
