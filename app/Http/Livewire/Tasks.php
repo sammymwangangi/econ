@@ -81,7 +81,7 @@ class Tasks extends Component
             'cancelButtonText' =>  '', 
             'showCancelButton' =>  false, 
             'showConfirmButton' =>  false, 
-      ]);
+        ]);
         // $this->emit('taskCreated');
     }
     public function showEditTaskModal($id)
@@ -139,7 +139,18 @@ class Tasks extends Component
              'taskfile' => $this->taskfile->store('task_files', 'public')
         ]);
         $this->reset();
-        session()->flash('message', 'Task Updated Successfully');
+        // session()->flash('message', 'Task Updated Successfully');
+        $this->alert('success', 'Task Updated Successfully!', [
+            'position' =>  'top-end', 
+            'timer' =>  3000,  
+            'toast' =>  true, 
+            
+            'text' =>  '', 
+            'confirmButtonText' =>  '', 
+            'cancelButtonText' =>  '', 
+            'showCancelButton' =>  false, 
+            'showConfirmButton' =>  false, 
+        ]);
     }
 
     public function deleteTask($id)
@@ -147,7 +158,18 @@ class Tasks extends Component
         $task = Task::find($id);
         Storage::delete('public/task_files/', $task->taskfile);
         $task->delete();
-        session()->flash('message', 'Task Deleted Successfully');
+        // session()->flash('message', 'Task Deleted Successfully');
+        $this->alert('success', 'Task Deleted Successfully!', [
+            'position' =>  'top-end', 
+            'timer' =>  3000,  
+            'toast' =>  true, 
+            
+            'text' =>  '', 
+            'confirmButtonText' =>  '', 
+            'cancelButtonText' =>  '', 
+            'showCancelButton' =>  false, 
+            'showConfirmButton' =>  false, 
+        ]);
     }
 
     public function refreshChildren()
