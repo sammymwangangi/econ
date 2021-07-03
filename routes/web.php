@@ -53,16 +53,25 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/taskmanager/my-tasks', fu
     return view('tasks.my-tasks');
 })->name('my-tasks');
 
-Route::resources([
-    'wiki' => PostController::class,
-    'categories' => CategoryController::class,
-    'settings' => GeneralController::class,
-    'comments' => CommentsController::class,
-    'taskmanager/projects' => ProjectController::class,
-    'taskmanager/tasks' => TasksController::class,
-]);
+// Route::resources([
+//     'wiki' => PostController::class,
+//     'categories' => categories::class,
+//     'settings' => GeneralController::class,
+//     'comments' => CommentsController::class,
+//     'taskmanager/projects' => ProjectController::class,
+//     'taskmanager/tasks' => TasksController::class,
+// ]);
 
-Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index');
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('wiki', categories::class);
+    Route::resource('categories', PostController::class);
+    Route::resource('settings', GeneralController::class);
+    Route::resource('comments', CommentsController::class);
+    Route::resource('taskmanager/projects', ProjectController::class);
+    Route::resource('taskmanager/tasks', TasksController::class);
+  });
+
+Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index')->middleware('auth');
 
 // Route::get('taskmanager/projects1', Projects::class);
 
