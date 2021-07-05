@@ -16,13 +16,13 @@
         </h1>
 
         <div class="mt-4">
-            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
+            <div class="space-y-8 divide-y divide-gray-200 w-full mt-10">
             <form wire:submit.prevent="newTask" enctype="multipart/form-data">
                 <div class="">
                     <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
                         Project Name
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <select
                             wire:model.lazy="newTask.project_id"
                             class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
@@ -38,7 +38,7 @@
                     <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
                         Name
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <input
                             wire:model.lazy="newTask.name"
                             class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
@@ -51,7 +51,7 @@
                     <label for="description" class="block text-sm font-medium leading-5 text-gray-700">
                         Description
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <textarea
                             rows="3"
                             wire:model.lazy="newTask.description"
@@ -65,7 +65,7 @@
                     <label for="start_at" class="block text-sm font-medium leading-5 text-gray-700">
                         Start At
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <input
                             type="date"
                             wire:model.lazy="newTask.start_at"
@@ -79,7 +79,7 @@
                     <label for="end_at" class="block text-sm font-medium leading-5 text-gray-700">
                         Due Date
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <input
                             type="date"
                             wire:model.lazy="newTask.end_at"
@@ -92,7 +92,7 @@
                     <label for="priority" class="block text-sm font-medium leading-5 text-gray-700">
                         Priority
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <select
                             wire:model.lazy="newTask.priority"
                             class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
@@ -109,7 +109,7 @@
                     <label for="status" class="block text-sm font-medium leading-5 text-gray-700">
                         Status
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <select
                             wire:model.lazy="newTask.status"
                             class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
@@ -125,7 +125,7 @@
                     <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
                         Assign to user
                     </label>
-                    <div class="mt-1 rounded-md shadow-sm">
+                    <div class="mt-1 w-full rounded-md shadow-sm">
                         <select
                             wire:model.lazy="newTask.assigned_to"
                             class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
@@ -156,7 +156,7 @@
                         @endif
                     </div>
                     <label for="title" class="block text-sm font-medium text-gray-700"> Task File </label>
-                    <div class="mt-1">
+                    <div class="mt-1 w-full">
                         <input type="file" id="taskfile" wire:model="taskfile" name="taskfile" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal sm:text-sm sm:leading-5" />
                     </div>
                     <!-- Progress Bar -->
