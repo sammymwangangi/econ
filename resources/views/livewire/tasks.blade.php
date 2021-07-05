@@ -46,7 +46,7 @@
     <x-jet-dialog-modal wire:model="showModalForm">
         <x-slot name="title">Create Task</x-slot>
         <x-slot name="content">
-            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
+            <div class="space-y-8 divide-y divide-gray-200 w-full mt-10">
                 <form wire:submit.prevent="save" enctype="multipart/form-data">
                     <div class="sm:col-span-6">
                         <label for="name" class="block text-sm font-medium text-gray-700"> Task Name </label>
