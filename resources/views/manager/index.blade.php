@@ -17,7 +17,7 @@
             <div>
 
                 <div class="flex items-center py-4">
-                    <h1 class="font-bold text-gray-700">Important Updates</h1>
+                    <h1 class="font-bold text-gray-700 selection:bg-yellow-500">Important Updates</h1>
                 </div>
                 <div class="flex flex-col py-2">
                     <div class="flex justify-between py-2 mb-2">
