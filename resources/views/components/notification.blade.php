@@ -8,3 +8,6 @@
             
     @endif
 @endforeach
+<div class="text-center px-1 py-1 text-green-500 font-bold my-2">
+    <a href="{{url('taskmanager/notifications')}}" class="">View all</a>
+</div>
