@@ -25,7 +25,7 @@ class Notification extends Component
     {
         // $notifications = auth()->user->notifications;
         return view('components.notification', [
-            'notifications' => auth()->user()->notifications
+            'notifications' => auth()->user()->unreadNotifications()->paginate(10)
         ]);
     }
 }
