@@ -809,10 +809,10 @@ select {
 .prose ol[type="a"] {
 	--list-counter-style: lower-alpha;
 }
-.prose ol[type="A s"] {
+.prose ol[type="A" s] {
 	--list-counter-style: upper-alpha;
 }
-.prose ol[type="a s"] {
+.prose ol[type="a" s] {
 	--list-counter-style: lower-alpha;
 }
 .prose ol[type="I"] {
@@ -821,10 +821,10 @@ select {
 .prose ol[type="i"] {
 	--list-counter-style: lower-roman;
 }
-.prose ol[type="I s"] {
+.prose ol[type="I" s] {
 	--list-counter-style: upper-roman;
 }
-.prose ol[type="i s"] {
+.prose ol[type="i" s] {
 	--list-counter-style: lower-roman;
 }
 .prose ol[type="1"] {
@@ -1733,9 +1733,16 @@ select {
 	--tw-divide-opacity: 1;
 	border-color: rgba(243, 244, 246, var(--tw-divide-opacity));
 }
+.divide-black > :not([hidden]) ~ :not([hidden]) {
+	--tw-divide-opacity: 1;
+	border-color: rgba(0, 0, 0, var(--tw-divide-opacity));
+}
 .divide-gray-300 > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-divide-opacity));
+}
+.divide-opacity-25 > :not([hidden]) ~ :not([hidden]) {
+	--tw-divide-opacity: 0.25;
 }
 .overflow-auto {
 	overflow: auto;
@@ -1964,10 +1971,6 @@ select {
 .bg-yellow-100 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(254, 243, 199, var(--tw-bg-opacity));
-}
-.bg-\[\#ee1b22\] {
-	--tw-bg-opacity: 1;
-	background-color: rgba(238, 27, 34, var(--tw-bg-opacity));
 }
 .bg-purple-500 {
 	--tw-bg-opacity: 1;
@@ -2631,6 +2634,10 @@ select {
 .hover\:bg-red-50:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
+}
+.hover\:bg-red-300:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(252, 165, 165, var(--tw-bg-opacity));
 }
 .hover\:bg-blue-200:hover {
 	--tw-bg-opacity: 1;
