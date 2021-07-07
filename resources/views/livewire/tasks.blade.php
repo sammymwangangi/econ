@@ -63,7 +63,7 @@
                         </div>
                         @error('description') <span class="error">{{ $message }}</span> @enderror
                     </div>
-                    
+
                     <div class="flex flex-wrap mb-6">
                         <label for="project" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">
                             {{ __('Project') }}:
@@ -93,6 +93,7 @@
                         <div class="mt-1 rounded-md shadow-sm">
                             <input
                                 type="date"
+                                min="2020-12-5"
                                 wire:model.lazy="start_at"
                                 class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
                                 placeholder="What's the task about?"

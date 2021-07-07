@@ -19,7 +19,7 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->string('name');
             $table->longText('description');
-            $table->string('assigned_to')->nullable();
+            $table->unsignedBigInteger('assigned_to')->nullable();
             $table->string('status');
             $table->date('start_at');
             $table->date('end_at');
@@ -27,6 +27,7 @@ class CreateTasksTable extends Migration
             $table->string('taskfile');
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('assigned_to')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');
             $table->timestamps();
         });
