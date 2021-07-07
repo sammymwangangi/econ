@@ -93,7 +93,8 @@
                         <div class="mt-1 rounded-md shadow-sm">
                             <input
                                 type="date"
-                                min="2020-01-02"
+                                min="2021-07-02"
+                                max="2024-07-02"
                                 wire:model.lazy="start_at"
                                 class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
                                 placeholder="What's the task about?"
@@ -113,6 +114,8 @@
                         <div class="mt-1 rounded-md shadow-sm">
                             <input
                                 type="date"
+                                min="2021-07-08"
+                                max="2024-07-02"
                                 wire:model.lazy="end_at"
                                 class="border rounded p-2 block w-full sm:text-sm sm:leading-5"
                             />
