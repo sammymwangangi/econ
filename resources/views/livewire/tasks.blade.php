@@ -23,7 +23,7 @@
                     <svg wire:click="showCreateTaskModal" class="w-6 h-6 text-gray-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
             </div>
-            @foreach($tasks as $task)
+            @forelse($tasks as $task)
                 <div class="flex-col hover:bg-red-50">
                     <div class="flex items-center gap-2 px-2 pt-2">
                         @include('layouts.status')
@@ -36,7 +36,9 @@
                     <div class="flex flex-wrap items-center gap-2 px-4 py-2">
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p class="text-yellow-500 font-bold px-12 py-10">No Tasks available!</p>
+            @endforelse
         </div>
     </div>
     <div class="text-center mt-4">
@@ -227,27 +229,6 @@
                 <x-jet-button wire:click="updateTask">Update</x-jet-button>
             @else
                 <x-jet-button wire:click="storeTask">Store</x-jet-button>
-            @endif
-        </x-slot>
-    </x-jet-dialog-modal>
-
-    <x-jet-dialog-modal wire:model="detailsModal">
-        <x-slot name="title">Task Details</x-slot>
-        <x-slot name="content">
-            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
-                {{$task->name}}
-                <p>
-                    {!! $task->description !!}
-                </p>
-            </div>
-        </x-slot>
-        <x-slot name="footer">
-            @if ($taskId)
-            <a href="{{route('tasks.show', $task->id)}}">
-                <x-jet-button>View full details</x-jet-button>
-            </a>
-            @else
-                <x-jet-button>Close</x-jet-button>
             @endif
         </x-slot>
     </x-jet-dialog-modal>

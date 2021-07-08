@@ -90,7 +90,7 @@ class TasksController extends Controller
         $task->user_id = auth()->user()->id;
         $task->save();
 
-        $user->notify(new TaskAdded);
+//        $user->notify(new TaskAdded);
 
         return redirect()->route('tasks.index')
             ->withSuccessMessage('Task added successfully.');

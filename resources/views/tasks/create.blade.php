@@ -1,6 +1,6 @@
 <x-task-layout>
 	<x-slot name="header">
-        
+
         <div class="flex gap-4">
 		  <div class="text-xl leading-wide">
 		  	<a class="hover:text-red-500" href="{{route('projects.index')}}">Tasks</a>
@@ -16,7 +16,7 @@
                     <div class="font-semibold bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-3 px-6 mb-0 rounded-t-lg">
                         {{ __('Add Tasks') }}
                     </div>
-                    <x-jet-validation-errors class="px-6 mb-4 mt-2" />    
+                    <x-jet-validation-errors class="px-6 mb-4 mt-2" />
 
                     <form class="w-full p-6" method="POST" action="{{route('tasks.store')}}" enctype="multipart/form-data">
                         @csrf
@@ -84,7 +84,7 @@
 
                             <select class="form-select px-4 py-3 w-full rounded" name="assigned_to">
                                 @foreach($users as $user)
-                                    <option value="{{$user->name}}">{{$user->name}}</option>
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
                             <p class="mt-2 text-sm text-gray-500">
