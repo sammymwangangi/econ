@@ -128,8 +128,9 @@
                     <div class="mt-1 w-full rounded-md shadow-sm">
                         <select
                             wire:model.lazy="newTask.assigned_to"
+                            name="assigned_to"
                             class="border appearance-none bg-white rounded p-2 block w-full sm:text-sm sm:leading-5">
-                            <option>Assign to User</option>
+                            <option value="">Assign to User</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach

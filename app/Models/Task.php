@@ -19,6 +19,7 @@ class Task extends Model
         'name',
         'description',
         'assigned_to',
+        'user_id',
         'status',
         'start_at',
         'end_at',

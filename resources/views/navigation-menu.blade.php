@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-2">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -24,16 +24,11 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ url('#') }}" :active="request()->routeIs('wiki.index')" target="_blank">
+                    <x-jet-nav-link href="{{ route('wiki.index') }}" :active="request()->routeIs('wiki.index')">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
                         {{ __('Wiki') }}
                     </x-jet-nav-link>
                 </div>
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
-                        {{ __('Livewire Projects') }}
-                    </x-jet-nav-link>
-                </div> --}}
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

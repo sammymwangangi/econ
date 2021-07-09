@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,7 +63,7 @@ class TasksCalendar extends LivewireCalendar
 
         $image_name = $this->taskfile->store('task_files', 'public');
         $task =new Task();
-        $task->user_id = auth()->user()->id;
+        $task->user_id = Auth::user()->id;
         $task->name = $this->name;
         $task->description = $this->description;
         $task->start_at = $this->start_at;

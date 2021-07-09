@@ -9,12 +9,11 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\WikiController;
 use App\Http\Livewire\Notifications;
 use App\Http\Livewire\Recap;
-use App\Models\Project;
 use App\Models\Task;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
-// use App\Http\Livewire\Projects;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 
@@ -55,15 +54,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/taskmanager/my-tasks', fu
     return view('tasks.my-tasks');
 })->name('my-tasks');
 
-// Route::resources([
-//     'wiki' => PostController::class,
-//     'categories' => categories::class,
-//     'settings' => GeneralController::class,
-//     'comments' => CommentsController::class,
-//     'taskmanager/projects' => ProjectController::class,
-//     'taskmanager/tasks' => TasksController::class,
-// ]);
-
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('wiki', categories::class);
     Route::resource('categories', PostController::class);
@@ -73,6 +63,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('taskmanager/tasks', TasksController::class);
     Route::get('taskmanager/notifications', Notifications::class);
     Route::get('taskmanager/daily_recap', Recap::class)->name('tasks.daily_recap');
+    Route::get('wiki', WikiController::class, 'index')->name('wiki.index');
   });
 
 Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index')->middleware('auth');
