@@ -9,14 +9,7 @@
     </div>
 </div>
 
-{{--<button class="md:dark:disabled:focus:hover:bg-gray-400">fdsfdsf</button>--}}
 
-<div class="bg-red-500/[0.31] my-72 px-12">
-    <div class="mix-blend-multiply bg-yellow-300">fhgfngffg</div>
-</div>
-<p class="selection:bg-yellow-300">
-    I'm yellow when you highlight me.
-</p>
-<div class="text-5xl font-bold text-center" style="margin-top: 10rem">
+<div class="text-5xl font-bold text-rose-400 text-center my-40">
     This project is a Work-In-Progress. <br> Come back later.
 </div>
