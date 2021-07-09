@@ -17,16 +17,16 @@ class project extends model
 
     public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasmany(task::class);
+        return $this->hasmany(Task::class);
     }
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsto(user::class);
+        return $this->belongsto(User::class);
     }
 
     public function team(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsto(team::class);
+        return $this->belongsto(Team::class);
     }
 }
