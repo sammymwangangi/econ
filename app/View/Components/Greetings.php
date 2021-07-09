@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Greeting extends Component
+class Greetings extends Component
 {
     /**
      * Create a new component instance.
@@ -35,12 +35,13 @@ class Greeting extends Component
         if ($time < "12") {
             $greetings = "Good morning";
         } elseif ($time >= "12" && $time < "5") {
-                $greetings = "Good afternoon";
-            } elseif ($time >= "5" && $time < "7") {
-                    $greetings = "Good evening";
-                } elseif ($time >= "7") {
-                        $greetings = "Good night";
-                    }
-        return view('components.greeting', compact('greetings'));
+            $greetings = "Good afternoon";
+        } elseif ($time >= "5" && $time < "7") {
+            $greetings = "Good evening";
+        } elseif ($time >= "7") {
+            $greetings = "Good night";
+        }
+
+        return view('components.greetings', compact('greetings'));
     }
 }
