@@ -120,7 +120,7 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($id);
         $projects = Project::all();
-        $users = User::all()->except([1]);
+        $users = User::all();
         return view('tasks.edit', compact('task','projects','users'));
     }
 
@@ -143,12 +143,6 @@ class TasksController extends Controller
             'assigned_to' => 'nullable',
             'taskfile' => 'image|max:2000',
         ]);
-
-        if ($validator->fails()) {
-            return redirect('taskmanager/tasks')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
 
         // Handle File Upload
         if($request->hasFile('taskfile')){

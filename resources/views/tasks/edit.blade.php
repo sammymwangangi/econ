@@ -1,6 +1,6 @@
 <x-task-layout>
 	<x-slot name="header">
-        
+
         <div class="flex gap-4">
 		  <div class="text-xl leading-wide">
 		  	<a class="hover:text-red-500" href="{{route('projects.index')}}">Tasks</a>
@@ -18,7 +18,7 @@
                         {{ __('Edit Task') }}
                     </div>
 
-                    <form class="w-full p-6" method="POST" action="{{route('tasks.update', $task->id)}}">
+                    <form class="w-full p-6" method="POST" action="{{route('tasks.update', $task->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
 
@@ -84,7 +84,7 @@
 
                             <select class="form-select px-4 py-3 w-full rounded" name="assigned_to">
                                 @foreach($users as $user)
-                                    <option value="{{$user->name}}">{{$user->name}}</option>
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
                             <p class="mt-2 text-sm text-gray-500">
