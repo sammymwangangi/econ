@@ -8,8 +8,3 @@
         {{ $greetings }}, {{ Auth::user()->name }}
     </div>
 </div>
-
-
-<div class="text-5xl font-bold text-center my-40">
-    This project is a <span class="text-transparent bg-gradient-to-r bg-clip-text from-yellow-400 via-red-500 to-pink-500">Work-In-Progress</span> <br> Come back later.
-</div>

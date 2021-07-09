@@ -1,12 +1,9 @@
 <x-task-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <h2 class="font-semibold text-lg text-gray-800 leading-tight">
-                Namaste, {{ Auth::user()->name }}!
-            </h2>
+        <div class="flex justify-between items-center">
+            <x-greetings />
             <div>
                 <livewire:projects />
-
             </div>
         </div>
     </x-slot>
