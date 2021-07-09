@@ -65,7 +65,12 @@
                 </div>
                 <div class="text-gray-800 font-bold">Unassigned</div>
                 @else
-                <div class="text-gray-800 font-bold">{{$task->assigned_to}}</div>
+                <div class="flex items-center text-gray-800 font-bold">
+                    <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                        <img class="h-6 w-6 rounded-full object-cover" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" />
+                    </button>
+                    {{$user->name}}
+                </div>
                 @endif
             </div>
             <div class="flex gap-2 items-center">

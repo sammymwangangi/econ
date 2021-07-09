@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Project;
 use App\Models\User;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\TaskAdded;
 use Illuminate\Support\Facades\Storage;
@@ -105,7 +106,8 @@ class TasksController extends Controller
     public function show($id)
     {
         $task = Task::findOrFail($id);
-        return view('tasks.show', compact('task'));
+        $user = User::find($task->assigned_to);
+        return view('tasks.show', compact('task', 'user'));
     }
 
     /**
