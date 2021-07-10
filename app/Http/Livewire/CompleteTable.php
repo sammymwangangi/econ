@@ -21,8 +21,9 @@ class CompleteTable extends LivewireDatatable
 
     public function builder()
     {
-        return Task::where('tasks.user_id', '=', Auth::user()->id)
-            ->where('status', '=', 'Complete');
+//        $user = User::find($task->assigned_to);
+        return Task::where('tasks.assigned_to', '=', Auth::user()->id)
+            ->where('status', '=', 'Completed');
     }
 
     public function columns()

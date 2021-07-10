@@ -22,6 +22,7 @@ class MyTaskTable extends LivewireDatatable
     public function builder()
     {
         return Task::where('tasks.user_id', '=', Auth::user()->id)
+            ->where('tasks.assigned_to', '=', Auth::user()->id)
             ->where('status', '=', 'No Progress');
     }
 
@@ -40,14 +41,23 @@ class MyTaskTable extends LivewireDatatable
 
             Column::name('project.name')
                 ->label('PROJECT'),
+
             Column::name('assigned_to'),
+
+//            Column::callback(['assigned_to', 'user.name'], function ($id, $planetName) {
+//                return "User $id hails from $planetName";
+//            })->label('Computed (php closure)'),
+
             Column::name('priority'),
+
             Column::name('status'),
 
             DateColumn::name('start_at')
                 ->label('STARTING DATE'),
+
             DateColumn::name('end_at')
                 ->label('DUE DATE'),
+
             DateColumn::name('created_at'),
 
         ];
