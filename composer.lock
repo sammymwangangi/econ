@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eec9107ed104bdb3f11ebf23348c362",
+    "content-hash": "47e35518749d8e7b17583b457fadd737",
     "packages": [
         {
             "name": "arielmejiadev/larapex-charts",
@@ -58,6 +58,67 @@
                 "source": "https://github.com/ArielMejiaDev/larapex-charts/tree/2.1.0"
             },
             "time": "2021-02-14T19:12:26+00:00"
+        },
+        {
+            "name": "asantibanez/laravel-blade-sortable",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asantibanez/laravel-blade-sortable.git",
+                "reference": "b9550761d6da4773eb04b99d337605f6f3384b92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asantibanez/laravel-blade-sortable/zipball/b9550761d6da4773eb04b99d337605f6f3384b92",
+                "reference": "b9550761d6da4773eb04b99d337605f6f3384b92",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "php": "^7.2|^7.3|^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Asantibanez\\LaravelBladeSortable\\LaravelBladeSortableServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelBladeSortable": "Asantibanez\\LaravelBladeSortable\\LaravelBladeSortableFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asantibanez\\LaravelBladeSortable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrés Santibáñez",
+                    "email": "santibanez.andres@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom Blade components to add sortable/drag-and-drop HTML elements in your apps",
+            "homepage": "https://github.com/asantibanez/laravel-blade-sortable",
+            "keywords": [
+                "asantibanez",
+                "laravel-blade-sortable"
+            ],
+            "support": {
+                "issues": "https://github.com/asantibanez/laravel-blade-sortable/issues",
+                "source": "https://github.com/asantibanez/laravel-blade-sortable/tree/v1.3.0"
+            },
+            "time": "2021-04-04T22:44:50+00:00"
         },
         {
             "name": "asantibanez/livewire-calendar",
@@ -120,6 +181,68 @@
                 "source": "https://github.com/asantibanez/livewire-calendar/tree/2.1.0"
             },
             "time": "2021-01-25T21:12:52+00:00"
+        },
+        {
+            "name": "asantibanez/livewire-status-board",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asantibanez/livewire-status-board.git",
+                "reference": "3f794e35c6db4858a5373886c474b7d37f24a586"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asantibanez/livewire-status-board/zipball/3f794e35c6db4858a5373886c474b7d37f24a586",
+                "reference": "3f794e35c6db4858a5373886c474b7d37f24a586",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0",
+                "livewire/livewire": "^2.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Asantibanez\\LivewireStatusBoard\\LivewireStatusBoardServiceProvider"
+                    ],
+                    "aliases": {
+                        "LivewireStatusBoard": "Asantibanez\\LivewireStatusBoard\\LivewireStatusBoardFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asantibanez\\LivewireStatusBoard\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrés Santibáñez",
+                    "email": "santibanez.andres@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Livewire component to show models/data according to its current status",
+            "homepage": "https://github.com/asantibanez/livewire-status-board",
+            "keywords": [
+                "asantibanez",
+                "livewire-status-board"
+            ],
+            "support": {
+                "issues": "https://github.com/asantibanez/livewire-status-board/issues",
+                "source": "https://github.com/asantibanez/livewire-status-board/tree/2.1.0"
+            },
+            "time": "2021-01-25T21:05:18+00:00"
         },
         {
             "name": "asm89/stack-cors",

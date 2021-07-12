@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class project extends model
+class Project extends model
 {
     use hasfactory;
 
@@ -15,17 +15,17 @@ class project extends model
         'team_id',
     ];
 
-    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function tasks()
     {
         return $this->hasmany(Task::class);
     }
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user()
     {
         return $this->belongsto(User::class);
     }
 
-    public function team(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function team()
     {
         return $this->belongsto(Team::class);
     }

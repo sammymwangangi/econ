@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('taskmanager/notifications', Notifications::class);
     Route::get('taskmanager/daily_recap', Recap::class)->name('tasks.daily_recap');
     Route::get('wiki', WikiController::class, 'index')->name('wiki.index');
+    Route::get('taskmanager/task-kanban', function () {
+        return view('task-kanban');
+    });
   });
 
 Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index')->middleware('auth');

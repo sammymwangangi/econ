@@ -148,6 +148,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laraveldaily/laravel-charts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mobiledetect/mobiledetectlib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/asantibanez/laravel-blade-sortable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/asantibanez/livewire-status-board" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

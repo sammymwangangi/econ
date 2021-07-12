@@ -21,5 +21,8 @@
         "postcss": "^8.3.5",
         "postcss-import": "^14.0.1",
         "tailwindcss": "^2.2.4"
+    },
+    "dependencies": {
+        "sortablejs": "^1.14.0"
     }
 }
