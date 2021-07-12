@@ -49,7 +49,7 @@
             </div>
             <div class="flex gap-2 items-center">
                 <div class="text-gray-500 font-semibold">Due Date: </div>
-                <div class="text-gray-800 font-bold">{{\Carbon\Carbon::parse($task->ends_at)->format('M d')}}</div>
+                <div class="text-gray-800 font-bold">{{\Carbon\Carbon::parse($task->end_at)->format('M d')}}</div>
             </div>
             <div class="flex gap-2 items-center">
                 <div class="text-gray-500 font-semibold">Status: </div>
