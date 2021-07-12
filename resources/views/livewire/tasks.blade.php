@@ -29,7 +29,7 @@
                         @include('layouts.status')
                         <a href="{{route('tasks.show', $task->id)}}"> {{ Str::limit(($task->name), 20) }}</a>
                         @include('layouts.priority')
-                        <button class="flex flex-shrink-0 items-center px-4 py-1 text-white rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 capitalize text-xs">
+                        <button class="flex flex-shrink-0 items-center px-4 py-0 text-white rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 capitalize text-xs">
                             {{\Carbon\Carbon::parse($task->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($task->end_at)->format('M d')}}
                         </button>
                     </div>
