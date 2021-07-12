@@ -50,6 +50,12 @@ class TasksCalendar extends LivewireCalendar
     public function onDayClick($year, $month, $day)
     {
         $this->isModalOpen = true;
+        $this->resetNewTask();
+
+        $this->newTask['start_at'] = Carbon::today()
+            ->setDate($year, $month, $day)
+            ->format('Y-m-d');
+
         $this->validate([
           'name' =>'required',
           'description'  => 'required',
