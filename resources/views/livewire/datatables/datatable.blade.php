@@ -123,8 +123,8 @@
                             @endforeach
                         </div>
                     @empty
-                        <p class="p-3 text-lg text-teal-600">
-                           There's Nothing to show at the moment
+                        <p class="p-3 text-lg text-gray-400 font-bold">
+                           All Clear...
                         </p>
                     @endforelse
                 </div>

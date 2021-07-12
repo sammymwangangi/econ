@@ -34,7 +34,7 @@ class ProjectsTable extends LivewireDatatable
 
             Column::name('user.name')
                 ->filterable()
-                ->label('USER'),
+                ->label('CREATED_BY'),
 
             Column::name('tasks.id:count')
                 ->filterable()

@@ -37,16 +37,10 @@ class MyTaskTable extends LivewireDatatable
             Column::name('name'),
 
             Column::name('user.name')
-                ->label('USER'),
+                ->label('CREATED_BY'),
 
             Column::name('project.name')
                 ->label('PROJECT'),
-
-            Column::name('assigned_to'),
-
-//            Column::callback(['assigned_to', 'user.name'], function ($id, $planetName) {
-//                return "User $id hails from $planetName";
-//            })->label('Computed (php closure)'),
 
             Column::name('priority'),
 

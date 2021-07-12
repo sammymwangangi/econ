@@ -16,6 +16,7 @@ class Recap extends Component
         return view('livewire.recap', [
             'overdueTasks' => Task::whereDate('end_at', '<', now())
                 ->where('assigned_to', '=', auth()->user()->id)
+                ->where('status', '!', 'Completed')
                 ->latest()
                 ->paginate(5),
             'dueTodayTasks' => Task::whereDate('end_at', $today)

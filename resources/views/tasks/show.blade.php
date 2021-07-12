@@ -11,7 +11,7 @@
         </div>
     </x-slot>
 
-    <div class="px-8 py-6 m-4 bg-gray-50 h-auto rounded">
+    <div class="px-8 py-6 m-4 bg-white h-auto rounded">
         <div class="flex items-center text-xl text-gray-500 font-bold px-8">
             {{$task->name}}
             @if(Auth::id() == $task->user->id)
@@ -37,7 +37,7 @@
                 <div class="text-gray-500 font-semibold">Created By: </div>
                 <div class="">
                     <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                        <img class="h-6 w-6 rounded-full object-cover" src="{{ $task->user->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        <img class="h-6 w-6 rounded-full object-cover" src="{{ $task->user->profile_photo_url }}" alt="{{ $task->user->name }}" />
                     </button>
                 </div>
                 <div class="text-gray-800 font-bold">{{$task->user->name}}</div>
@@ -79,8 +79,15 @@
                     @include('layouts.priority-icon')
                 </div>
             </div>
+            @if($task->status == 'Completed')
+                <div class="flex gap-2 items-center">
+                    <div class="text-gray-500 font-semibold">Completed Date: </div>
+                    <div class="text-gray-800 font-bold">{{\Carbon\Carbon::parse($task->updated_at)->format('M d')}}</div>
+                </div>
+            @endif
         </div>
-        <div class="bg-white shadow-lg rounded px-8 py-4 my-4 text-gray-600">{!! $task->description !!}</div>
+{{--        <div class="bg-white shadow-lg rounded px-8 py-4 my-4 text-gray-600">{!! $task->description !!}</div>--}}
+        <div class="border border-dashed border-gray-500 rounded px-8 py-4 my-4 text-gray-600">{!! $task->description !!}</div>
 
         <div class="flex gap-2 py-4">
             <div class="text-gray-400 font-semibold uppercase text-lg">Attachments</div>
@@ -88,11 +95,15 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
             </div>
         </div>
-        <div class="px-8 py-1 bg-white text-base">
-            {{-- <img src="/storage/storage/task_files/{{$task->taskfile_url}}" width="100" height="100" alt="task-file"> --}}
-            <a href="{{url('storage/'.$task->taskfile)}}" download>{{$task->taskfile}}</a>
-
-        </div>
+        @if($task->taskfile == true)
+            <div class="px-8 py-1 border border-dashed border-gray-500 text-base">
+                <a href="{{url('storage/'.$task->taskfile)}}" download>{{$task->taskfile}}</a>
+            </div>
+        @else
+            <div class="px-8 py-1 border border-dashed border-gray-500 text-base text-gray-300">
+                No files attached.
+            </div>
+        @endif
         <div class="text-gray-500 font-bold">
             <h1 id="comments" class="py-4 text-xl">Comments</h1>
             <hr>
@@ -100,7 +111,7 @@
             @include('layouts.commentsDisplay', ['comments' => $task->comments, 'task_id' => $task->id])
 
             <hr />
-            <h4 class="py-4 font-semibold">Add comment</h4>
+            <h4 class="py-4 font-semibold">Leave a comment</h4>
             <form method="post" action="{{ route('comments.store'   ) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Notifications\CommentAdded;
 
 class CommentsController extends Controller
 {
@@ -18,13 +19,14 @@ class CommentsController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
-   
+
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
-    
+
         Comment::create($input);
-   
-        return back()->withSuccessMessage('Comment Successful!');
+        request()->user()->notify(new CommentAdded($input));
+
+        return back()->withSuccessMessage('Comment Added Successful!');
     }
 
     /**

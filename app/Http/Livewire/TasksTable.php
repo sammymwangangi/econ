@@ -42,15 +42,15 @@ class TasksTable extends LivewireDatatable
             Column::name('user.name')
                 ->filterable()
                 ->searchable()
-                ->label('USER'),
+                ->label('CREATED_BY'),
 
             Column::name('project.name')
                 ->filterable()
                 ->searchable()
                 ->label('PROJECT'),
-            Column::name('assigned_to')
-                ->filterable()
-                ->searchable(),
+//            Column::name('assigned_to')
+//                ->filterable()
+//                ->searchable(),
             Column::name('priority')->filterable(['None', 'Low', 'Medium', 'High'])->searchable(),
             Column::name('status')->filterable(['No Progress', 'In Progress', 'Complete'])->searchable(),
 

@@ -37,11 +37,10 @@ class CompleteTable extends LivewireDatatable
             Column::name('name'),
 
             Column::name('user.name')
-                ->label('USER'),
+                ->label('CREATED_BY'),
 
             Column::name('project.name')
                 ->label('PROJECT'),
-            Column::name('assigned_to'),
             Column::name('priority'),
             Column::name('status'),
 
