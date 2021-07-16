@@ -40,13 +40,13 @@
                         rows="3"
                         placeholder="Details regarding the task"
                         class="border rounded p-2 block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                    >{{ $selectedTask['description'] }}</textarea>
+                    >{!! $selectedTask['description'] !!}</textarea>
                 </div>
             </div>
 
             <div class="sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700">
-                    Scheduled At
+                    Starts At
                 </label>
                 <div class="mt-1 rounded-md shadow-sm">
                     <input
@@ -74,14 +74,6 @@
         </div>
 
         <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-            <div class="flex w-full rounded-md shadow-sm sm:col-start-2">
-                <button
-                    type="button"
-                    wire:click.stop="unscheduleTask"
-                    class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
-                    View More Details
-                </button>
-            </div>
             <div class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:col-start-1">
                 <button
                     type="button"
