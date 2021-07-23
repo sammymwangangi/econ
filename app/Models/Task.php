@@ -15,18 +15,6 @@ class Task extends Model
 
     protected $guarded = [];
 
-    protected $fillable = [
-        'name',
-        'description',
-        'assigned_to',
-        'user_id',
-        'status',
-        'start_at',
-        'end_at',
-        'priority',
-        'taskfile',
-    ];
-
     public function scopeOfStatus($query, $status)
     {
         return $query->where('status', $status);
