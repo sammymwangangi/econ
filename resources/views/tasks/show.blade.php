@@ -93,14 +93,14 @@
 {{--        <div class="bg-white shadow-lg rounded px-8 py-4 my-4 text-gray-600">{!! $task->description !!}</div>--}}
         <div class="border border-dashed border-gray-500 rounded px-8 py-4 my-4 text-gray-600">{!! $task->description !!}</div>
 
-        <div class="mb-4 text-xl font-extrabold px-2 text-gray-500">
+        <div class="mb-4 text-lg font-extrabold px-2 text-gray-500">
             SUBTASKS
         </div>
 
         @forelse($subtasks as $subtask)
             <div class="px-4 mb-4">
-                <div class="h-auto items-center shadow rounded bg-white p-4 mb-4">
-                    <div class="flex flex-wrap items-center gap-2">
+                <div class="items-center shadow rounded bg-white px-2 mb-4">
+                    <div class="flex flex-wrap items-center gap-2 text-sm">
                         <div class="flex flex-wrap items-center gap-2">
                             @include('layouts.status')
                             <a href="{{route('tasks.show', $subtask->id)}}" class="font-semibold">{{$subtask->name}}</a>
@@ -112,16 +112,12 @@
                                 </button>
                             @endif
                             @include('layouts.priority')
-                            <button class="flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                            <button class="flex flex-shrink-0 items-center px-4 py-0 text-xs text-white font-semibold rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                                 {{\Carbon\Carbon::parse($subtask->start_at)->format('M d')}} - {{\Carbon\Carbon::parse($subtask->ends_at)->format('M d')}}
                             </button>
-                            @if($subtask->assigned_to === null)
-                                <button class="hidden flex flex-shrink-0 items-center px-4 py-1 text-xs text-white font-semibold rounded-full bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
-                                    {{$user->name}}
-                                </button>
-                            @else
+                            @if($subtask->assigned_to == true)
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" />
+                                    <img class="h-5 w-5 rounded-full object-cover" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" />
                                 </button>
                             @endif
                         </div>
