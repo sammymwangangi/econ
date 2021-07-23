@@ -108,7 +108,8 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($id);
         $user = User::find($task->assigned_to);
-        return view('tasks.show', compact('task', 'user'));
+        $subtasks = Task::find($id)->subtasks;
+        return view('tasks.show', compact('task', 'user', 'subtasks'));
     }
 
     /**
