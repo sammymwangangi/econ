@@ -45,6 +45,10 @@ class Task extends Model
         return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 
+    public function subtasks(){
+        return $this->hasMany(Subtask::class);
+    }
+
     public function isAssigned(){
         return (bool) $this->assigned_to;
     }

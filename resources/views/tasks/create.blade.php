@@ -26,6 +26,12 @@
                                 {{ __('Project') }}:
                             </label>
 
+{{--                            <select id="assign_user" class="select2-multi px-4 py-3 w-full rounded" name="assigned_to[]" multiple="multiple">--}}
+{{--                                @foreach($users as $user)--}}
+{{--                                    <option value="{{$user->id}}">{{$user->name}}</option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+
                             <select class="form-select px-4 py-3 w-full rounded" name="project_id">
                                 @foreach($projects as $project)
                                     <option value="{{$project->id}}">{{$project->name}}</option>

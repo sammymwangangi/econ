@@ -36,7 +36,7 @@ class TasksController extends Controller
     public function create()
     {
         $projects = Project::all();
-        $users = User::all()->except([1]);
+        $users = User::all();
         return view('tasks.create', compact('projects','users'));
     }
 
@@ -90,6 +90,7 @@ class TasksController extends Controller
         $task->project_id = $request->project_id;
         $task->user_id = auth()->user()->id;
         $task->save();
+//        $task->assigned_to()->attach($request->input('assigned_to'));
 
 //        $user->notify(new TaskAdded);
 

@@ -11,7 +11,7 @@ class TaskStatusBoard extends LivewireStatusBoard
     {
         return collect([
             [
-                'id' => 1,
+                'id' => 'No Progress',
                 'title' => 'No Progress',
             ],
             [
@@ -64,7 +64,7 @@ class TaskStatusBoard extends LivewireStatusBoard
 
     public function onStatusChanged($recordId, $statusId, $fromOrderedIds, $toOrderedIds)
     {
-        //
+//        $this->statusId = $task->status;
     }
 
     public function onRecordClick($recordId)

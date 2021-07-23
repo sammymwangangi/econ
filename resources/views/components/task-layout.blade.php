@@ -14,6 +14,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css">
 
         @livewireStyles
 
@@ -83,6 +84,14 @@
                     placement :instance.reference.getAttribute('data-placement')
                     });
                 }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+
+        <script>
+
+            $(document).ready(function() {
+                $('.select2-multi').select2();
             });
         </script>
 
