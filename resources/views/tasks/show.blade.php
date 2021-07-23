@@ -126,7 +126,7 @@
             </div>
         @empty
             <div class="px-4 mb-4">
-                <div class="h-auto items-center shadow rounded bg-white p-4 mb-4">
+                <div class="h-auto items-center shadow rounded bg-white px-2 mb-4">
                     No Subtasks Found!
                 </div>
             </div>
