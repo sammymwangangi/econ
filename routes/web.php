@@ -56,7 +56,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/taskmanager/my-tasks', fu
 })->name('my-tasks');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::resource('wiki', categories::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('settings', GeneralController::class);
     Route::resource('comments', CommentsController::class);
