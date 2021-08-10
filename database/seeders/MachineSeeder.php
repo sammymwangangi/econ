@@ -13,6 +13,6 @@ class MachineSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }
