@@ -16,6 +16,11 @@ class CreateMachinesTable extends Migration
         Schema::create('machines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('value_stream_id')
+            ->nullable()
+            ->constrained('value_streams')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

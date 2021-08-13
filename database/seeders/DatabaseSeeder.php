@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+// use App\Models\Prod\ValueStream;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            ValueStreamSeeder::class,
+            MachineSeeder::class,
+            EmployeeSeeder::class,
+        ]);
         // \App\Models\User::factory(1)->create();
 
         // Reset cached roles and permissions
