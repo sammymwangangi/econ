@@ -15,9 +15,12 @@ class CreateAvailabilityLossesTable extends Migration
     {
         Schema::create('availability_losses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('value_stream_id')
+            ->nullable()
+            ->constrained('value_streams')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->string('name');
-            $table->integer('mins');
-            $table->integer('total_failure_mins');
             $table->timestamps();
         });
     }

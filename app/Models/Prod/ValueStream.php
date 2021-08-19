@@ -15,4 +15,14 @@ class ValueStream extends Model
     {
         return $this->hasMany(Machine::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function availability_loss()
+    {
+        return $this->hasMany(AvailabilityLoss::class);
+    }
 }

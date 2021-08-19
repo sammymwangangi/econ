@@ -17,9 +17,14 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('sku_code');
             $table->text('description');
-            $table->integer('actual_pcs');
-            $table->integer('actual_ctn');
-            $table->integer('envelope_paper_weight');
+            $table->foreignId('value_stream_id')
+            ->nullable()
+            ->constrained('value_streams')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->integer('actual_pcs')->nullable();
+            $table->integer('actual_ctn')->nullable();
+            $table->integer('envelope_paper_weight')->nullable();
             $table->timestamps();
         });
     }

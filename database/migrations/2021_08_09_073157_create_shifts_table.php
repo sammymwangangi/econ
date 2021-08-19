@@ -18,15 +18,10 @@ class CreateShiftsTable extends Migration
             $table->string('name');
             $table->integer('hours');
             $table->integer('mins');
-            $table->integer('workforce_no');
-            $table->integer('manhour');
-            $table->unsignedBigInteger('operator_id')->nullable();
-            $table->integer('no_plan_mins');
-            $table->integer('planned_maintenance_mins');
-            $table->integer('operating_mins');
-            $table->float('run_time');
-
-            $table->foreign('operator_id')->references('id')->on('employees');
+            $table->time('from_1');
+            $table->time('to_1');
+            $table->time('from_2')->nullable();
+            $table->time('to_2')->nullable();
             $table->timestamps();
         });
     }
