@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ProdController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\CKEditorController;
@@ -70,6 +71,7 @@ Route::group(['middleware' => 'auth'], function() {
   });
 
 Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index')->middleware('auth');
+Route::get('/production', [ProdController::class, 'index'])->name('prod.index')->middleware('auth');
 
 // Route::get('taskmanager/projects1', Projects::class);
 

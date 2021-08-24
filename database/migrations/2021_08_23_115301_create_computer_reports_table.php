@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportsTable extends Migration
+class CreateComputerReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,26 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('computer_reports', function (Blueprint $table) {
             $table->id();
             $table->time('start');
             $table->time('end');
-            $table->integer('run_mins');
             $table->integer('no_plan');
+            $table->integer('preventative_maintenance_mins');
             $table->integer('operating_mins');
-            $table->integer('failure_mins');
+            $table->foreignId('product_id')
+                ->nullable()
+                ->constrained('products')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('paper_id')
+                ->nullable()
+                ->constrained('papers')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->integer('target');
+            $table->integer('actual_output');
+            $table->integer('gap');
             $table->foreignId('availability_loss_id')
                 ->nullable()
                 ->constrained('availability_losses')
@@ -47,37 +59,13 @@ class CreateReportsTable extends Migration
                 ->constrained('employees')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('assis_1')
-                ->nullable()
-                ->constrained('employees')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('assis_2')
-                ->nullable()
-                ->constrained('employees')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('assis_3')
-                ->nullable()
-                ->constrained('employees')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('assis_4')
-                ->nullable()
-                ->constrained('employees')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->foreignId('reject_id')
                 ->nullable()
                 ->constrained('rejects')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->integer('no_of_rejects');
-            $table->integer('availability_percentage');
-            $table->integer('performance_percentage');
-            $table->integer('quality_percentage');
-            $table->integer('oee_percentage');
-            
+
             $table->timestamps();
         });
     }
@@ -89,6 +77,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('computer_reports');
     }
 }
