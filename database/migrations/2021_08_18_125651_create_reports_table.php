@@ -21,6 +21,8 @@ class CreateReportsTable extends Migration
             $table->integer('no_plan');
             $table->integer('operating_mins');
             $table->integer('failure_mins');
+            $table->integer('workforce');
+            $table->integer('man_hr');
             $table->foreignId('availability_loss_id')
                 ->nullable()
                 ->constrained('availability_losses')
