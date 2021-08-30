@@ -9,7 +9,7 @@ class Report extends Model
 {
     use HasFactory;
 
-    public function value_stream()
+    public function valueStream()
     {
         return $this->belongsTo(ValueStream::class);
     }

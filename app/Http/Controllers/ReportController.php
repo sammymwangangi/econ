@@ -49,7 +49,6 @@ class ReportController extends Controller
             'start' => 'required',
             'end' => 'required',
             'workforce' => 'required',
-            'start_at' => 'required',
         ]);
 
         if ($validator->fails()) {

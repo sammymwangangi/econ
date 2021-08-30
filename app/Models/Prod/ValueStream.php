@@ -30,4 +30,9 @@ class ValueStream extends Model
     {
         return $this->hasMany(AvailabilityLoss::class);
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 }

@@ -2,7 +2,8 @@
     <div class="px-4 py-4">
 
         <div class="mt-5 md:mt-0">
-            <form action="{{route('reports.store')}}" method="post">
+            <x-jet-validation-errors class="px-6 mb-4 mt-2" />
+            <form action="{{route('reports.store')}}" method="POST">
                 @csrf
                 <div class="shadow overflow-hidden sm:rounded-md">
                     <div class="px-4 py-5 bg-white sm:p-6">
@@ -15,15 +16,37 @@
                             </div>
 
                             <div class="flex-1">
-                                <label for="value_stream" class="block text-sm font-medium text-gray-700">Value
+                                <label for="start"
+                                    class="block text-sm font-medium text-gray-700">Start Hour</label>
+                                <input type="time" name="start" id="start" autocomplete="start"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                            </div>
+
+                            <div class="flex-1">
+                                <label for="end"
+                                    class="block text-sm font-medium text-gray-700">End Hour</label>
+                                <input type="time" name="end" id="end" autocomplete="end"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+
+                            <div class="flex-1">
+                                <label for="workforce" class="block text-sm font-medium text-gray-700">Work
+                                    Force:</label>
+                                <input type="number" name="workforce" id="workforce"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                        </div>
+                        <div class="lg:flex gap-4">
+
+                            <div class="flex-1">
+                                <label for="value_stream_id" class="block text-sm font-medium text-gray-700">Value
                                     Stream</label>
-                                <select id="value_stream" name="value_stream" autocomplete="value_stream"
+                                <select id="value_stream_id" name="value_stream_id" autocomplete="value_stream_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                     <option>Select...</option>
                                     @foreach ($value_streams as $value_stream)
-                                    <option value="{{$value_stream->id}}">{{$value_stream->name}}</option>
+                                        <option value="{{$value_stream->id}}">{{$value_stream->name}}</option>
                                     @endforeach
-
                                 </select>
                             </div>
 
@@ -49,13 +72,6 @@
                                     <option value="{{$shift->id}}">{{$shift->name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-
-                            <div class="flex-1">
-                                <label for="workforce" class="block text-sm font-medium text-gray-700">Work
-                                    Force:</label>
-                                <input type="number" name="workforce" id="workforce"
-                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
                         </div>
                         <div class="lg:flex gap-4 py-2">
@@ -129,7 +145,7 @@
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                     <option>Select...</option>
                                     @foreach ($products as $product)
-                                    <option value="{{$product->sku_code}}">{{$product->sku_code}}</option>
+                                    <option value="{{$product->id}}">{{$product->sku_code}}</option>
                                     @endforeach
                                 </select>
                             </div>
