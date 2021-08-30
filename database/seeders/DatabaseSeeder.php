@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             ProductSeeder::class,
             AvailabilityLossSeeder::class,
+            RejectSeeder::class,
         ]);
         // \App\Models\User::factory(1)->create();
 

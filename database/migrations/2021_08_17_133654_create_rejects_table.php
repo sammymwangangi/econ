@@ -15,6 +15,9 @@ class CreateRejectsTable extends Migration
     {
         Schema::create('rejects', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('name');
+            $table->foreignId('value_stream_id')->nullable()->constrained('value_streams')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

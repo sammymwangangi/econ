@@ -21,6 +21,11 @@ class ValueStream extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function rejects()
+    {
+        return $this->hasMany(Reject::class);
+    }
+
     public function availability_loss()
     {
         return $this->hasMany(AvailabilityLoss::class);

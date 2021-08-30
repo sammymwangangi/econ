@@ -9,9 +9,12 @@ class Shift extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
+    protected $guarded = [];
 
     public function employees(){
         return $this->hasMany(Employee::class);
+    }
+    public function reports(){
+        return $this->hasMany(Report::class);
     }
 }
