@@ -15,7 +15,7 @@ class Report extends Model
     }
     public function machine()
     {
-        return $this->belongsTo(Macine::class);
+        return $this->belongsTo(Machine::class);
     }
 
     public function shift()
