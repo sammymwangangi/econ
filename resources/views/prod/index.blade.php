@@ -43,7 +43,7 @@
                                     Stream</label>
                                 <select id="value_stream_id" name="value_stream_id" autocomplete="value_stream_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($value_streams as $value_stream)
                                         <option value="{{$value_stream->id}}">{{$value_stream->name}}</option>
                                     @endforeach
@@ -55,7 +55,7 @@
                                     class="block text-sm font-medium text-gray-700">Machine</label>
                                 <select id="machine_id" name="machine_id" autocomplete="machine_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($machines as $machine)
                                     <option value="{{$machine->id}}">{{$machine->name}}</option>
                                     @endforeach
@@ -67,7 +67,7 @@
                                     class="block text-sm font-medium text-gray-700">Shift</label>
                                 <select id="shift_id" name="shift_id" autocomplete="shift_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($shifts as $shift)
                                     <option value="{{$shift->id}}">{{$shift->name}}</option>
                                     @endforeach
@@ -80,7 +80,7 @@
                                 <label for="operator_id" class="block text-sm font-medium text-gray-700">Operator</label>
                                 <select id="operator_id" name="operator_id" autocomplete="operator_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -90,7 +90,7 @@
                                 <label for="assis_1" class="block text-sm font-medium text-gray-700">Assistant Operator 1</label>
                                 <select id="assis_1" name="assis_1" autocomplete="assis_1"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -100,7 +100,7 @@
                                 <label for="assis_2" class="block text-sm font-medium text-gray-700">Assistant Operator 2</label>
                                 <select id="assis_2" name="assis_2" autocomplete="assis_2"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -110,7 +110,7 @@
                                 <label for="assis_3" class="block text-sm font-medium text-gray-700">Assistant Operator 3</label>
                                 <select id="assis_3" name="assis_3" autocomplete="assis_3"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -120,7 +120,7 @@
                                 <label for="assis_4" class="block text-sm font-medium text-gray-700">Assistant Operator 4</label>
                                 <select id="assis_4" name="assis_4" autocomplete="assis_4"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -130,7 +130,7 @@
                                 <label for="assis_5" class="block text-sm font-medium text-gray-700">Assistant Operator 5</label>
                                 <select id="assis_5" name="assis_5" autocomplete="assis_5"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -143,7 +143,7 @@
                                 <label for="product_1" class="block text-sm font-medium text-gray-700">Product SKU Code</label>
                                 <select id="product_1" name="product_1" autocomplete="product_1"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($products as $product)
                                     <option value="{{$product->id}}">{{$product->sku_code}}</option>
                                     @endforeach
@@ -174,7 +174,7 @@
                                 <label for="availability_loss_id" class="block text-sm font-medium text-gray-700">Availability Loss</label>
                                 <select id="availability_loss_id" name="availability_loss_id" autocomplete="availability_loss_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($availability_losses as $availability_loss)
                                     <option value="{{$availability_loss->id}}">{{$availability_loss->name}}</option>
                                     @endforeach
@@ -197,7 +197,7 @@
                                 <label for="reject_id" class="block text-sm font-medium text-gray-700">Rejects</label>
                                 <select id="reject_id" name="reject_id" autocomplete="reject_id"
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    
+                                    <option></option>
                                     @foreach ($rejects as $reject)
                                         <option value="{{$reject->id}}">{{$reject->name}}</option>
                                     @endforeach
