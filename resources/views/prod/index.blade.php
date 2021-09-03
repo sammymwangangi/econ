@@ -244,15 +244,7 @@
         </div>
 
         <div class="mt-5 md:mt-0">
-            <livewire:datatable
-                model="App\Models\Prod\Report"
-                with="machine, machine.name"
-                include="production_date, start, machine.name|Machine, workforce"
-                dates="production_date"
-                times="start|g:i A"
-                hideable="select"
-                exportable
-            />
+            <x-report-table></x-report-table>
         </div>
 
     </div>

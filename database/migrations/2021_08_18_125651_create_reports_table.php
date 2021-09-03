@@ -39,7 +39,6 @@ class CreateReportsTable extends Migration
             $table->integer('offcut_kgs')->nullable();
             $table->integer('reject_kgs')->nullable();
             $table->integer('trim_waste_kgs')->nullable();
-            
             $table->timestamps();
         });
     }

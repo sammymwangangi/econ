@@ -30,7 +30,13 @@ class ReportsTable extends LivewireDatatable
                 ->label('START HOUR')
                 ->filterable()
                 ->hide(),
+
             Column::name('workforce')
+                ->defaultSort('asc')
+                ->searchable()
+                ->filterable(),
+
+            NumberColumn::name('workforce')
                 ->defaultSort('asc')
                 ->searchable()
                 ->filterable(),
@@ -38,7 +44,7 @@ class ReportsTable extends LivewireDatatable
             Column::name('machine.name')
                 ->label('Machine')
                 ->searchable()
-                ->filterable($this->planets),
+                ->filterable($this->machines),
 
         ];
     }
