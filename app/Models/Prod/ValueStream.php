@@ -9,7 +9,7 @@ class ValueStream extends Model
 {
     use HasFactory;
 
-    public $guarded= [];
+    protected $guarded = [];
 
     public function machines()
     {

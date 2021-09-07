@@ -9,7 +9,7 @@ class Employee extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
+    protected $guarded = [];
 
     public function shift(){
         return $this->belongsTo(Shift::class, 'foreign_key', 'operator_id');

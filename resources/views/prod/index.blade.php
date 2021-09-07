@@ -35,6 +35,18 @@
                                 <input type="number" name="workforce" id="workforce"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
+
+                            <div class="flex-1">
+                                <label for="np_mins" class="block text-sm font-medium text-gray-700">No Plan Mins:</label>
+                                <input type="number" name="np_mins" id="np_mins"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+
+                            <div class="flex-1">
+                                <label for="pm_mins" class="block text-sm font-medium text-gray-700">Planned Maintenance Mins:</label>
+                                <input type="number" name="pm_mins" id="pm_mins"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
                         </div>
                         <div class="lg:flex gap-4">
 

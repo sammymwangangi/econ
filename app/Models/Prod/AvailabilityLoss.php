@@ -9,6 +9,8 @@ class AvailabilityLoss extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function value_stream()
     {
         return $this->belongsTo(ValueStream::class);
