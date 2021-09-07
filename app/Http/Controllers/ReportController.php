@@ -62,6 +62,8 @@ class ReportController extends Controller
         $report->start = $request->start;
         $report->end = $request->end;
         $report->workforce = $request->workforce;
+        $report->np_mins = $request->np_mins;
+        $report->pm_mins = $request->pm_mins;
         $report->value_stream_id = $request->value_stream_id;
         $report->machine_id = $request->machine_id;
         $report->shift_id = $request->shift_id;

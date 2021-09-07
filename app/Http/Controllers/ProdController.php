@@ -10,6 +10,7 @@ use App\Models\Prod\Product;
 use App\Models\Prod\Shift;
 use App\Models\Prod\ValueStream;
 use App\Models\Prod\Reject;
+use App\Models\Prod\Report;
 
 class ProdController extends Controller
 {
@@ -22,6 +23,7 @@ class ProdController extends Controller
         $employees = Employee::all();
         $availability_losses = AvailabilityLoss::all();
         $rejects = Reject::all();
+        $reports = Report::all();
         return view('prod.index', compact('value_streams','machines','shifts','products','employees','availability_losses','rejects'));
     }
 }

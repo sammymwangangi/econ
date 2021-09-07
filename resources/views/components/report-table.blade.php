@@ -39,6 +39,18 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                No Plan Mins
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Planned Maintenance Mins
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Operating Mins
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                 Operator Name
                             </th>
                         </tr>
@@ -59,19 +71,33 @@
                                 {{$report->shift->name}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->shift->hours}}
+                                {{$report->shift->hours}}Hr
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->shift->mins}}
+                                {{$report->shift->mins}}Min
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                 {{$report->workforce}}
                             </td>
+                            @php
+                                $shift_mins = $report->shift->hours * $report->workforce;
+                                $operating_mins = $report->shift->mins - ($report->np_mins + $report->pm_mins);
+                            @endphp
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->shift->hours * $report->workforce}}
+                                {{$shift_mins}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->assis_3}}
+                                {{$report->np_mins}}Min
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                {{$report->pm_mins}}Min
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                
+                                {{$operating_mins}}Min
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                {{$report->operator_id}}
                             </td>
                         </tr>
                         @endforeach

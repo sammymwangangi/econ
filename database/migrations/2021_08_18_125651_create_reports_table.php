@@ -21,7 +21,6 @@ class CreateReportsTable extends Migration
             $table->integer('workforce');
             $table->integer('np_mins');
             $table->integer('pm_mins');
-            $table->integer('workforce');
             $table->foreignId('value_stream_id')->nullable()->constrained('value_streams')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('machine_id')->nullable()->constrained('machines')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('shift_id')->nullable()->constrained('shifts')->onUpdate('cascade')->onDelete('cascade');
