@@ -30,14 +30,19 @@ class Report extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function employees()
+    public function operators()
     {
-        return $this->hasMany(Employee::class);
+        return $this->hasMany(Employee::class, 'foreign_key', 'operator_id');
     }
 
     public function availabilityLosses()
     {
         return $this->hasMany(AvailabilityLoss::class);
+    }
+
+    public function losses()
+    {
+        return $this->hasMany(Loss::class);
     }
 
     public function rejects()

@@ -5,7 +5,7 @@ namespace App\Models\Prod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AvailabilityLoss extends Model
+class Loss extends Model
 {
     use HasFactory;
 
@@ -14,9 +14,5 @@ class AvailabilityLoss extends Model
     public function value_stream()
     {
         return $this->belongsTo(ValueStream::class);
-    }
-
-    public function reports(){
-        return $this->belongsToMany(Report::class);
     }
 }
