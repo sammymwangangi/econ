@@ -57,6 +57,22 @@
                                 class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                 Availability Loss
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Availability Loss MINS
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                RUN TIME
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                AVL%
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 bg-gray-100 dark:bg-black text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                PERF%
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
@@ -105,6 +121,29 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                 {{$report->availability_loss_id}}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                {{$report->availability_loss_mins}}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                {{($report->shift->mins) - ($report->availability_loss_mins) }}
+                            </td>
+                            @php
+                                $sm = $report->shift->mins;
+                                $run_time = $sm - $report->availability_loss_mins;
+                                $avl_perc = ($run_time / $sm) * 100;
+                            @endphp
+                            {{-- {{number_format(round(($row->discount_price/$row->selling_price)*100), 2)}}% --}}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                {{number_format($avl_perc, 1)}}%
+                            </td>
+                            @php
+                                $sm = $report->shift->mins;
+                                $run_time = $sm - $report->availability_loss_mins;
+                                $avl_perc = ($run_time / $sm) * 100;
+                            @endphp
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                {{number_format($avl_perc, 1)}}%
                             </td>
                         </tr>
                         @endforeach
