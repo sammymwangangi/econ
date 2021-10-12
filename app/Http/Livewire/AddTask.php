@@ -15,7 +15,7 @@ class AddTask extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $name,$description,$project_id,$start_at,$end_at,$status,$assigned_to,$priority,$taskfile;
+    public $name, $description, $project_id, $start_at, $end_at, $status, $assigned_to, $priority, $taskfile;
     public $newTaskFile;
     public $taskId = null;
 
@@ -34,18 +34,18 @@ class AddTask extends Component
     public function storeTask()
     {
         $this->validate([
-          'name' =>'required',
-          'description'  => 'required',
-          'start_at'  => 'required',
-          'end_at'  => 'required',
-          'status'  => 'required',
-          'priority'  => 'required',
-          'taskfile' => 'image|max:1024', // 1MB Max
+            'name' => 'required',
+            'description'  => 'required',
+            'start_at' => ['required', 'date:Y-m-d', 'after:yesterday'],
+            'end_at' => ['required', 'date:Y-m-d', 'after:start_at'],
+            'status'  => 'required',
+            'priority'  => 'required',
+            'taskfile' => 'image|max:1024', // 1MB Max
         ]);
 
         // $image_name = $this->taskfile->getClientOriginalName();
         // $this->taskfile->storeAs('public/task_files/', $image_name);
-        $task =new Task();
+        $task = new Task();
         $task->user_id = auth()->user()->id;
         $task->name = $this->name;
         $task->description = $this->description;
@@ -79,24 +79,24 @@ class AddTask extends Component
     public function updateTask()
     {
         $this->validate([
-          'name' =>'required',
-          'description'  => 'required',
-          'start_at'  => 'required',
-          'end_at'  => 'required',
-          'status'  => 'required',
-          'priority'  => 'required'
-      ]);
+            'name' => 'required',
+            'description'  => 'required',
+            'start_at'  => 'required',
+            'end_at'  => 'required',
+            'status'  => 'required',
+            'priority'  => 'required'
+        ]);
 
         Task::find($this->taskId)->update([
-             'name' => $this->name,
-             'description'  => $this->description,
-             'start_at'  => $this->start_at,
-             'end_at'  => $this->end_at,
-             'status'  => $this->status,
-             'priority'  => $this->priority,
-             'assigned_to'  => $this->assigned_to,
-             'project_id'  => $this->project_id,
-             'taskfile' => $this->taskfile->store('task_files')
+            'name' => $this->name,
+            'description'  => $this->description,
+            'start_at'  => $this->start_at,
+            'end_at'  => $this->end_at,
+            'status'  => $this->status,
+            'priority'  => $this->priority,
+            'assigned_to'  => $this->assigned_to,
+            'project_id'  => $this->project_id,
+            'taskfile' => $this->taskfile->store('task_files')
         ]);
         $this->reset();
         session()->flash('flash.banner', 'Task Updated Successfully');

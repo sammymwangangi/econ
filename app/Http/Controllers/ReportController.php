@@ -45,7 +45,7 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'production_date' => 'required',
+            'production_date' => ['required', 'date:Y-m-d', 'after:yesterday'],
             'start' => 'required',
             'end' => 'required',
             'workforce' => 'required',
