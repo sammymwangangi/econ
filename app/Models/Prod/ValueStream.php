@@ -9,10 +9,30 @@ class ValueStream extends Model
 {
     use HasFactory;
 
-    public $guarded= [];
+    protected $guarded = [];
 
     public function machines()
     {
         return $this->hasMany(Machine::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function rejects()
+    {
+        return $this->hasMany(Reject::class);
+    }
+
+    public function availability_loss()
+    {
+        return $this->hasMany(AvailabilityLoss::class);
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
     }
 }

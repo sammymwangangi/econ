@@ -17,9 +17,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            ShiftSeeder::class,
             ValueStreamSeeder::class,
             MachineSeeder::class,
             EmployeeSeeder::class,
+            ProductSeeder::class,
+            AvailabilityLossSeeder::class,
+            RejectSeeder::class,
         ]);
         // \App\Models\User::factory(1)->create();
 
@@ -37,7 +41,7 @@ class DatabaseSeeder extends Seeder
         // may be done by chaining
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
-        
+
         $role = Role::create(['name' => 'admin'])
             ->givePermissionTo(['create models', 'edit models']);
 

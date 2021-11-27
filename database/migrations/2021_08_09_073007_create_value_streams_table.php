@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShiftsTable extends Migration
+class CreateValueStreamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateShiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('value_streams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('hours');
-            $table->integer('mins');
-            $table->time('from_1');
-            $table->time('to_1');
-            $table->time('from_2')->nullable();
-            $table->time('to_2')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateShiftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('value_streams');
     }
 }

@@ -9,9 +9,13 @@ class Employee extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
+    protected $guarded = [];
 
     public function shift(){
         return $this->belongsTo(Shift::class, 'foreign_key', 'operator_id');
+    }
+
+    public function report(){
+        return $this->belongsTo(Report::class, 'foreign_key', 'operator_id');
     }
 }

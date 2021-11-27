@@ -9,7 +9,7 @@ class Machine extends Model
 {
     use HasFactory;
 
-    public $guarded= [];
+    protected $guarded = [];
 
     public function value_stream()
     {

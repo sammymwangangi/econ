@@ -53,8 +53,8 @@ class TasksController extends Controller
             'description' => 'required',
             'status' => 'required',
             'priority' => 'required',
-            'start_at' => 'required',
-            'end_at' => 'required',
+            'start_at' => ['required', 'date:Y-m-d', 'after:yesterday'],
+            'end_at' => ['required', 'date:Y-m-d', 'after:start_at'],
             'assigned_to' => 'nullable',
             'taskfile' => 'image|max:2000',
         ]);

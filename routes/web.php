@@ -6,11 +6,13 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ProdController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\WikiController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Livewire\Notifications;
 use App\Http\Livewire\Recap;
 use App\Models\Task;
@@ -56,6 +58,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/taskmanager/my-tasks', fu
 })->name('my-tasks');
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::resource('reports', ReportController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('settings', GeneralController::class);
     Route::resource('comments', CommentsController::class);
@@ -70,6 +73,7 @@ Route::group(['middleware' => 'auth'], function() {
   });
 
 Route::get('/taskmanager', [ManagerController::class, 'index'])->name('manager.index')->middleware('auth');
+Route::get('/production', [ProdController::class, 'index'])->name('prod.index')->middleware('auth');
 
 // Route::get('taskmanager/projects1', Projects::class);
 

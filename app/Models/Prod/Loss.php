@@ -5,9 +5,11 @@ namespace App\Models\Prod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Loss extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 
     public function value_stream()
     {

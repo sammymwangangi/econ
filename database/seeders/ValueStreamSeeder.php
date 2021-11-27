@@ -29,5 +29,13 @@ class ValueStreamSeeder extends Seeder
         $value_stream4 = ValueStream::create([
             'name' => 'EXB'
         ]);
+
+        $value_stream5 = ValueStream::create([
+            'name' => 'COMP'
+        ]);
+
+        $value_stream6 = ValueStream::create([
+            'name' => 'OTHERS'
+        ]);
     }
 }

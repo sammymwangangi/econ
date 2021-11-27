@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateValueStreamsTable extends Migration
+class CreateRejectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateValueStreamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('value_streams', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('rejects', function (Blueprint $table) {
+            $table->id();
+            $table->string('code');
             $table->string('name');
+            $table->foreignId('value_stream_id')->nullable()->constrained('value_streams')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateValueStreamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('value_streams');
+        Schema::dropIfExists('rejects');
     }
 }
