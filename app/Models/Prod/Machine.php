@@ -11,6 +11,10 @@ class Machine extends Model
 
     protected $guarded = [];
 
+    public function stationeries(){
+        return $this->hasMany(Stationery::class);
+    }
+
     public function value_stream()
     {
         return $this->belongsTo(ValueStream::class);

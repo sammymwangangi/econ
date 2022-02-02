@@ -30,6 +30,7 @@
         "rappasoft/laravel-livewire-tables": "^1.8",
         "realrashid/sweet-alert": "^3.2",
         "santigarcor/laratrust": "^6.3",
+        "sheetdb/sheetdb-php": "^1.0",
         "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {

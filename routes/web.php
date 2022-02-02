@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\GeneralController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\StationeryController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProdController;
 use App\Http\Controllers\ProjectController;
@@ -22,6 +22,18 @@ use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 Route::get('/', function () {
     return view('auth.login');
+});
+Route::middleware(['auth:sanctum', 'verified'])->get('/sheet', function (\App\Services\GoogleSheet $googleSheet) {
+    // $values = [
+    //     [3, 'John', 'JSAlbum', '2020-08-14', 4],
+    //     [4, 'Robert', 'Website', '2020-08-13', 5],
+    // ];
+
+    // $savedData = $googleSheet->saveDataToSheet($values);
+    // dump($savedData);
+
+    dd($googleSheet->readGoogleSheet());
+    return view('sheet');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -59,6 +71,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/taskmanager/my-tasks', fu
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('reports', ReportController::class);
+    Route::resource('production/stationeries', StationeryController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('settings', GeneralController::class);
     Route::resource('comments', CommentsController::class);

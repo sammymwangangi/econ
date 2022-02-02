@@ -2,7 +2,7 @@
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-greeting />
-            <p class="font-bold !font-light">
+            <p class="font-boldt">
                 This will be medium even though bold comes later in the CSS.
             </p>
             <div class="text-5xl font-bold text-center my-40">

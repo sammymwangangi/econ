@@ -7,144 +7,116 @@
                         <tr>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Date
+                                ID
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Value Stream
+                                CELL
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Machine
+                                SHIFT
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Shift
+                                MANPOWER
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Hours
+                                TARGET OUTPUT
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Mins
+                                TOTAL OUTPUT
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Workforce
+                                MENCELL
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Man HR/Cell
+                                REELS CONSUMED (KGS)
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                No Plan Mins
+                                OFF CUT DEFECTS (KGS)
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Planned Maintenance Mins
+                                TRIM WASTE (KGS)
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Operating Mins
+                                REJECTS & REWORK (KGS)
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Operator Name
+                                SHIFT KGS OF PRODUCTION
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Availability Loss
+                                STATUS
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                Availability Loss MINS
+                                REPORT SUBMITTED ON
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                RUN TIME
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                AVL%
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 bg-gray-800 dark:bg-black text-left text-xs font-medium text-gray-100 dark:text-gray-300 uppercase tracking-wider">
-                                PERF%
+                                TIME
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
-                        @foreach($reports as $report)
+                        @foreach($stationeries as $stationery)
                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-800">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->production_date}}
+                                {{$stationery->id}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->value_stream->name}}
+                                {{$stationery->machine->name}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->machine->name}}
+                                {{$stationery->shift->name}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->shift->name}}
+                                {{$stationery->manpower}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->shift->hours}}Hr
+                                {{$stationery->target_output}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->shift->mins}}Min
+                                {{$stationery->total_output}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->workforce}}
-                            </td>
-                            @php
-                                $shift_mins = $report->shift->hours * $report->workforce;
-                                $operating_mins = $report->shift->mins - ($report->np_mins + $report->pm_mins);
-                            @endphp
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$shift_mins}}
+                                {{$stationery->mencell}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->np_mins}}Min
+                                {{$stationery->reels_consumed}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->pm_mins}}Min
+                                {{$stationery->off_cut_defects}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                
-                                {{$operating_mins}}Min
+                                {{$stationery->trim_waste}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->operator_id}}
+                                {{$stationery->rejects_rework}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->availability_loss_id}}
+                                {{$stationery->shift_kgs}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{$report->availability_loss_mins}}
+                                {{$stationery->status}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{($report->shift->mins) - ($report->availability_loss_mins) }}
+                                {{$stationery->created_at->format('d M Y')}}
                             </td>
-                            @php
-                                $sm = $report->shift->mins;
-                                $run_time = $sm - $report->availability_loss_mins;
-                                $avl_perc = ($run_time / $sm) * 100;
-                            @endphp
-                            {{-- {{number_format(round(($row->discount_price/$row->selling_price)*100), 2)}}% --}}
+
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{number_format($avl_perc, 1)}}%
+                                {{$stationery->created_at->format('H:i:s')}}
                             </td>
-                            @php
-                                $sm = $report->shift->mins;
-                                $run_time = $sm - $report->availability_loss_mins;
-                                $avl_perc = ($run_time / $sm) * 100;
-                            @endphp
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                {{number_format($avl_perc, 1)}}%
-                            </td>
+                            
                         </tr>
                         @endforeach
 

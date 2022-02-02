@@ -69,7 +69,7 @@
                                     class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                     <option></option>
                                     @foreach ($machines as $machine)
-                                    <option value="{{$machine->id}}">{{$machine->name}}</option>
+                                        <option value="{{$machine->id}}">{{$machine->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -260,5 +260,7 @@
         </div>
 
     </div>
-
+{{-- @push('scripts')
+    <script src="https://sheetdb.io/s/t/cwliwkmzzqxwe.js"></script>
+@endpush --}}
 </x-prod-layout>
